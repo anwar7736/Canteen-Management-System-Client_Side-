@@ -1,13 +1,17 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import cogoToast from 'cogo-toast';
-function App() {
-  return (
-    <div className="App">
-      <h1 className="alert alert-success" style={{fontWeight: 'bolder', padding : '10px'}}>Hello</h1>
-    </div>
-  );
+import React, {Component, Fragment} from 'react';
+import {BrowserRouter as Router} from 'react-router-dom';
+import Routes from './routes/routes';
+
+class App extends React.Component{
+  render(){
+    return (
+        <Fragment>
+            <Router>
+                <Routes/>
+            </Router>
+        </Fragment>
+    );
+  }
 }
 
 export default App;
