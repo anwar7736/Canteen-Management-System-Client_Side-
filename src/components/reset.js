@@ -53,7 +53,7 @@ ResetPassword=(e)=>{
 
 	else{
 		this.setState({updateBtn : 'Updating...', isDisabled : true});
-		Axios.post('https://api.coderanwar.com/api/ResetPassword', {email : email, password : new_pass})
+		Axios.post('http://127.0.0.1:8000/api/ResetPassword', {email : email, password : new_pass})
                  .then(response=>{
 						if(response.status==200 && response.data==1)
 						{

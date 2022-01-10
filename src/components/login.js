@@ -11,6 +11,7 @@ class Login extends React.Component{
 			password : '',
 			isChecked : true,
 			redirectStatus : false,
+			isDisabled : false,
 		}
 	
 componentDidMount(){
@@ -44,14 +45,16 @@ Login=(e)=>{
 		 cogoToast.warn('Password Field is Required!')
 	}
 	else{
+		 this.setState({isDisabled : true});
 		Axios.post('http://127.0.0.1:8000/api/login', {username:username, password:password})
                  .then(response=>{
                     if(response.status==200 && response.data[0]==='admin')
                     {
+                    	 this.setState({isDisabled : false});
                          // localStorage.setItem('login', true);
 						 localStorage.setItem('current_user', username);
-                         localStorage.setItem('seller', response.data[1]);
-                         localStorage.setItem('admin', true);
+                         localStorage.setItem('admin_verification', true);
+                         localStorage.setItem('email_verified', response.data[1]);
                          if(this.state.isChecked==true)
                          {
                          	localStorage.setItem('user', this.state.username);
@@ -71,6 +74,7 @@ Login=(e)=>{
                     }
                     else if (response.status==200 && response.data[0]==='user')
                     {
+                    	 this.setState({isDisabled : false});
                     	// localStorage.setItem('login', true);
 						localStorage.setItem('current_user', username);
                          localStorage.setItem('user', true);
@@ -96,10 +100,12 @@ Login=(e)=>{
 
                     else if(response.data === 0){
                          cogoToast.error("Username or password is wrong!");
+                          this.setState({isDisabled : false});
                     }
                  })
                  .catch(error=>{
                     cogoToast.error('Something went wrong!');
+                     this.setState({isDisabled : false});
                  })
 	}
 }
@@ -121,9 +127,17 @@ passwordShowHide=()=>{
 RedirectToHomePage=()=>{
 	if(this.state.redirectStatus==true)
 	{
-		return (
+		if(localStorage.getItem('email_verified'))
+		{
+			return (
+				<Redirect to="/otp_verification" />
+				);
+		}
+		else {
+			return (
 				<Redirect to="/home" />
 				);
+		}
 	}
 }
 
@@ -148,7 +162,7 @@ RedirectToHomePage=()=>{
 						  <Form.Group className="mb-3" controlId="formBasicCheckbox">
 							<Form.Check type="checkbox" onChange={this.RememberOnChange} defaultChecked={this.state.isChecked} className="text-primary" label="Remember me" />
 						   </Form.Group>
-						  <Button variant="success" className="btn-block mb-1" type="submit">
+						  <Button variant="success" className="btn-block mb-1" type="submit" disabled={this.state.isDisabled}>
 						    Login	
 						  </Button>
 						  <Form.Group>

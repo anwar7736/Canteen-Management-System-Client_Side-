@@ -6,17 +6,15 @@ import {Redirect} from "react-router";
 import Axios from 'axios';
 
 class OTP extends React.Component{
-	constructor(){
-		super()
-		this.state = {
-			email : '',
-            otp: '',
-            redirectStatus : false,
-            totalSec : 300,
-            status : false,
-            isDisabled : true,
-			verifyBtn : 'Verify OTP',
-		}
+	state = {
+		email : '',
+        otp: '',
+        redirectStatus : false,
+        totalSec : 300,
+        status : false,
+        isDisabled : true,
+		verifyBtn : 'Verify OTP',
+		count_down : '',
 	}
 componentDidMount(){
 	let email = localStorage.getItem('email_verified');
@@ -26,8 +24,8 @@ componentDidMount(){
 		this.setState({email : email});
 	}
 
-	setInterval(this.countDown,1000); 
-	Axios.post('https://api.coderanwar.com/api/GetOTPExpiration', {email : email})
+	const timer = setInterval(this.countDown,1000); 
+	Axios.post('http://127.0.0.1:8000/api/GetOTPExpiration', {email : email})
 	.then(response=>{
 		if(response.data < 0)
 		{
@@ -42,6 +40,10 @@ componentDidMount(){
 
 	})    
 
+}
+
+componentWillUnmount(){
+	clearInterval(this.timer);
 }
 
 countDown=()=>{
@@ -63,7 +65,7 @@ countDown=()=>{
 	   return this.setState({status : true, totalSec : ''});
 	 }
 	 else{
-		   document.getElementById('count_down').innerHTML = min + ':' + sec; 
+		   this.setState({'count_down':  min + ':' + sec}); 
 		   this.state.totalSec--;
 	 }
    
@@ -94,16 +96,17 @@ OTPVerify=(e)=>{
 	MyForm.append('email', email);
 	MyForm.append('otp', otp);
 
-	Axios.post('https://api.coderanwar.com/api/OTPVerification', MyForm)
+	Axios.post('http://127.0.0.1:8000/api/OTPVerification', MyForm)
 	.then(response=>{
 		this.setState({verifyBtn : 'Verify OTP', isDisabled : true});
 		if(response.status==200 && response.data==1)
 		{
 			cogoToast.success('OTP Verification Successfully');
 			setTimeout(()=>{
-				localStorage.setItem('otp_verified', email);
+				(localStorage.getItem('admin_verification')==null) && localStorage.setItem('otp_verified', email);
 				this.setState({otp : '', isDisabled : true});
 				localStorage.removeItem('email_verified');
+				localStorage.setItem('admin', true);
 				this.setState({redirectStatus : true});
 			},1000);
 			
@@ -137,9 +140,19 @@ passwordShowHide=()=>{
 
 onRedirectToResetPassword=()=>{
 	if(this.state.redirectStatus===true){
-		return (
+		if(localStorage.getItem('admin_verification'))
+		{
+			localStorage.removeItem('admin_verification');
+			return (
+				<Redirect to="/home" />
+				);
+		}
+		else {
+			return (
 				<Redirect to="/reset_password" />
 			   );
+		}
+
 	}
 } 
 onRedirectToEmailVerify=()=>{
@@ -158,7 +171,7 @@ onRedirectToEmailVerify=()=>{
  						<Form id="OTPForm" onSubmit={this.OTPVerify}>
  							<h2 className="text-center text-danger">Step 02 : OTP Verification</h2>
 							 <p>We've already sent 6 digits OTP number in this email : {this.state.email}</p><hr/>
-                             <p>This OTP will be expired within <span id="count_down" className="text-danger"></span></p>
+                             <p>This OTP will be expired within <span id="count_down" className="text-danger">{this.state.count_down}</span></p>
                              <hr/>
 						  <Form.Group controlId="formBasicEmail">
 						    <Form.Label>Enter Valid OTP</Form.Label>
