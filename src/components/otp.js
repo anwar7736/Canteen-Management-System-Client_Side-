@@ -103,10 +103,9 @@ OTPVerify=(e)=>{
 		{
 			cogoToast.success('OTP Verification Successfully');
 			setTimeout(()=>{
-				(localStorage.getItem('admin_verification')==null) && localStorage.setItem('otp_verified', email);
+				localStorage.setItem('otp_verified', email);
 				this.setState({otp : '', isDisabled : true});
 				localStorage.removeItem('email_verified');
-				localStorage.setItem('admin', true);
 				this.setState({redirectStatus : true});
 			},1000);
 			
@@ -140,20 +139,11 @@ passwordShowHide=()=>{
 
 onRedirectToResetPassword=()=>{
 	if(this.state.redirectStatus===true){
-		if(localStorage.getItem('admin_verification'))
-		{
-			localStorage.removeItem('admin_verification');
-			return (
-				<Redirect to="/home" />
-				);
-		}
-		else {
 			return (
 				<Redirect to="/reset_password" />
 			   );
 		}
-
-	}
+	
 } 
 onRedirectToEmailVerify=()=>{
 	if(this.state.status===true){

@@ -25,11 +25,14 @@ class DesktopNavbar extends React.Component{
         alert(localStorage.getItem('name'))
     }
     Logout=()=>{
-        localStorage.removeItem('admin');
-        localStorage.removeItem('worker');
-        localStorage.removeItem('current_user');
         localStorage.removeItem('login');
-        localStorage.removeItem('seller');
+        localStorage.removeItem('id');
+        localStorage.removeItem('name');
+        localStorage.removeItem('username');
+        localStorage.removeItem('email');
+        localStorage.removeItem('phone');
+        localStorage.removeItem('photo');
+        localStorage.removeItem('address');
         this.setState({redirectStatus : true});
     }
 
@@ -46,16 +49,34 @@ class DesktopNavbar extends React.Component{
     
     const login_logout_btn = 
         
-        this.state.login==true ? 
-                            <>
-                                <Nav.Link className="text-center" onClick={this.Logout}>
-                                        <div className="nav-item-div">
-                                            <i className="fas mx-1 fas fa-power-off"/>Logout
-                                        </div>
-                                </Nav.Link>
-                            </>
-                          : 
+        this.state.login ?
                           <>
+                            <NavDropdown title={<img className="profile-photo" src={localStorage.getItem('photo')}/>} id="navbarScrollingDropdown">
+                             <NavDropdown.Item>
+                                <span className="text-muted">{localStorage.getItem('name')}</span>
+                            </NavDropdown.Item>
+                            <NavDropdown.Divider />
+                            <NavDropdown.Item>
+                                 <Link to="/notification" className="btn"><i className="fas h4 fa-bell"></i> <sup><span className="badge text-white bg-danger">1</span></sup></Link>
+                            </NavDropdown.Item> 
+                             <NavDropdown.Item>
+                                <Link to="/user_profile"><span className="btn text-success"><i className="fa h4 fa-user"></i> My Profile</span></Link>
+                            </NavDropdown.Item>
+                            <NavDropdown.Item>
+                                <Link to="/change_password"><span className="btn text-primary"><i class="fas fa-key"></i> Change Password</span></Link>
+                            </NavDropdown.Item> 
+                            <NavDropdown.Item>
+                                <Link to="#"><span className="btn text-muted"><i class="fas fa-cog"></i> Settings</span></Link>
+                            </NavDropdown.Item>
+                            <NavDropdown.Divider />
+                            <NavDropdown.Item>
+                                <a onClick={this.Logout} className="link btn text-danger"><i class="fas fa-power-off"></i> Logout</a>
+                            </NavDropdown.Item>
+                            <NavDropdown.Divider />
+                        </NavDropdown>  
+                        </>
+                        :
+                        <>
                               <Nav.Link className="text-center">
                                     <Link to="/login">
                                         <div className="nav-item-div">
@@ -85,7 +106,7 @@ class DesktopNavbar extends React.Component{
 				      	 	</Link>
 				      </Nav.Link>
 				      <Nav.Link className="text-center">
-				      	 	<Link to="#">
+				      	 	<Link to="/user_profile">
 				      	 		<div className="nav-item-div">
 				      	 		 	<i className="fa mx-1 fa-user-alt"/>My Profile
 				      			 </div>
@@ -115,18 +136,6 @@ class DesktopNavbar extends React.Component{
                                     </div>
                                 </Link>
                             </Nav.Link>
-                            <NavDropdown className="nav-item-div" title="Others" id="navbarScrollingDropdown">
-                                 <NavDropdown.Item>
-                                    <Link to="#" className="text-danger" >Notification <span> <i className="fa fa-heart"><sup>1</sup></i></span></Link>
-                                </NavDropdown.Item>
-                                <NavDropdown.Item>
-                                    <Link to="#" className="text-success" >Settings</Link>
-                                </NavDropdown.Item>
-                                <NavDropdown.Divider />
-                                <NavDropdown.Item>
-                                    <Link to="/change_password" className="text-danger">Change Password</Link>
-                                </NavDropdown.Item>
-                          </NavDropdown>
                           <i className="fa fa-report-alt"/><NavDropdown className="nav-item-div" title="Reports" id="navbarScrollingDropdown">
                                  <NavDropdown.Item>
                                     <Link to="#"className="text-danger" >Day Wise Meal Report</Link>
@@ -145,6 +154,7 @@ class DesktopNavbar extends React.Component{
                                 </NavDropdown.Item>
                                 <NavDropdown.Divider />
                           </NavDropdown>
+                           
                            {
                             login_logout_btn
                            }
