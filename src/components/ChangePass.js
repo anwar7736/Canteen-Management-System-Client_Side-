@@ -9,7 +9,7 @@ class ChangePass extends React.Component{
 	constructor(){
 		super()
 		this.state = {
-			username : '',
+			old_pass : '',
 			new_pass : '',
 			confirm_pass : '',
 			updateBtn : 'Update Password',
@@ -17,20 +17,20 @@ class ChangePass extends React.Component{
 		}
 	}
 	componentDidMount() {
-		let username = localStorage.getItem('current_user');
-		if(username!==null)
-		{
-			this.setState({username : username});
-		}
+
 	}
 	
 
 ChangePassword=(e)=>{
 	e.preventDefault();
-	let username = this.state.username;
-	let new_pass = this.state.new_pass;
-	let confirm_pass = this.state.confirm_pass;
-	if(new_pass=='')
+	const {old_pass, new_pass, confirm_pass} = this.state;
+	const id = localStorage.getItem('id');
+
+	if(old_pass=='')
+	{
+		 cogoToast.error('Old Password is Required!')
+	}
+	else if(new_pass=='')
 	{
 		 cogoToast.error('New Password is Required!')
 	}
@@ -50,7 +50,8 @@ ChangePassword=(e)=>{
 
 		this.setState({updateBtn : 'Updating...', isDisabled : true});
 		let MyForm = new FormData();
-		MyForm.append('username', username);
+		MyForm.append('id', id);
+		MyForm.append('oldpass', old_pass);
 		MyForm.append('newpass', new_pass);
 		Axios.post('https://api.coderanwar.com/api/ChangePassword', MyForm)
                  .then(response=>{
@@ -60,6 +61,7 @@ ChangePassword=(e)=>{
 						   this.setState({
 							updateBtn : 'Update Password', 
 							isDisabled : false, 
+							old_pass : '',
 							new_pass : '',
 							confirm_pass : ''
 						});
@@ -69,10 +71,8 @@ ChangePassword=(e)=>{
 						this.setState({
 							updateBtn : 'Update Password', 
 							isDisabled : false, 
-							new_pass : '',
-							confirm_pass : ''
 						});
-						cogoToast.error('Something went wrong!');
+						cogoToast.error('Old Password does not Match!');
                    }
                  })
                  .catch(error=>{
@@ -86,11 +86,9 @@ ChangePassword=(e)=>{
  			<div className="container mt-4 col-lg-5 col-md-5 col-sm-8 col-xs-12">
  						<Form onSubmit={this.ChangePassword}>
  								<h2 className="text-center text-danger">Change Password</h2>
-						  <Form.Group controlId="formBasicEmail">
-						    <Form.Label>Username </Form.Label>
-						    <Form.Control disabled value={this.state.username} onChange={(e)=>{this.setState({email:e.target.value})}} type="text" placeholder="Enter email" />
-						    <Form.Text className="text-muted">
-						    </Form.Text>
+						  <Form.Group controlId="formBasicPassword">
+						    <Form.Label>Enter Old Password</Form.Label>
+						    <Form.Control value={this.state.old_pass} onChange={(e)=>{this.setState({old_pass:e.target.value})}} type="password" placeholder="Enter old password" />
 						  </Form.Group>
 						  <Form.Group controlId="formBasicPassword">
 						    <Form.Label>Enter New Password</Form.Label>
@@ -103,10 +101,10 @@ ChangePassword=(e)=>{
 						  <Button disabled={this.state.isDisabled} variant="info" className="btn-block" type="submit">
 						  {this.state.updateBtn}
 						  </Button><br/>
-						    <Link href="/login">
-						    <p className="forget-pass">Back to Login</p> 
+						    <Link to="/">
+						    <p className="forget-pass">Back to Home</p>
 						    </Link>
-						</Form>
+						</Form><br/><br/>
  			</div>
  		</Fragment>
  		)

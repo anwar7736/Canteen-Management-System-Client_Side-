@@ -32,7 +32,7 @@ EmailVerify=(e)=>{
 	}
 	else{
 		this.setState({verifyBtn : 'Verifying....', isDisabled : true});
-		Axios.post('http://127.0.0.1:8000/api/EmailVerification', {email:email})
+		Axios.post('https://api.coderanwar.com/api/EmailVerification', {email:email})
                  .then(response=>{
                     if(response.status==200 && response.data=='1')
                     {

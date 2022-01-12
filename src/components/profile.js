@@ -15,10 +15,11 @@ class Profile extends Component {
             photo : '',
             address : '',
             previewImg : '',
+            updateBtn : 'Update Profile',
         }
     componentDidMount(){
         let user_id= localStorage.getItem('id');
-        Axios.get('http://127.0.0.1:8000/api/GetUserProfile/'+user_id)
+        Axios.get('https://api.coderanwar.com/api/GetUserProfile/'+user_id)
         .then(response=>{
             if(response.status===200)
             {
@@ -36,7 +37,8 @@ class Profile extends Component {
 
         })
      }
-    onUpdateProfile=()=>{
+    onUpdateProfile=(e)=>{
+     e.preventDefault();
       let id = localStorage.getItem('id');
       let name = this.state.name;
       let username = this.state.username;
@@ -102,7 +104,7 @@ class Profile extends Component {
             MyForm.append('photo', photo);
             MyForm.append('address', address);
 
-            Axios.post('http://127.0.0.1:8000/api/UpdateProfile', MyForm)
+            Axios.post('https://api.coderanwar.com/api/UpdateProfile', MyForm)
             .then(response=>{                
                 if(typeof response.data === 'string')
                 {
@@ -143,60 +145,43 @@ class Profile extends Component {
     }
     render() {
         return (
-            <Fragment><br/>
-                <Container className="TopSection animated slideInDown mb-5">
-                    <Row className="p-0">
-                        <Col className="offset-md-3 shadow-sm bg-white mt-1" md={6} lg={6} sm={12} xs={12}>
-                            <Row>
-                                <Col md={12} lg={12} sm={12} xs={12}>
-                                    <div className="card p-2">
-                                        <div className="card-body">
-                                            <div className="container-fluid ">
-                                                <div className="row">
-                                                    <div className="col-md-12 p-1  col-lg-12 col-sm-12 col-12">
-                                                        <h5 className="text-success text-center"><b>YOUR PROFILE</b></h5><hr/>
-                                                    </div>
-                                                </div>
-                                                <div className="row">
-                                                    <div className="col-md-12 p-1 col-lg-12 col-sm-12 col-12">
-                                                        <label className="form-label">Your Name</label>
-                                                        <input value={this.state.name} onChange={(e)=>this.setState({name:e.target.value})} className="form-control" type="text" placeholder=""/>
-                                                    </div> 
-                                                    <div className="col-md-12 p-1 col-lg-12 col-sm-12 col-12">
-                                                        <label className="form-label">Your Username</label>
-                                                        <input value={this.state.username} onChange={(e)=>this.setState({username:e.target.value})} className="form-control" type="text" placeholder=""/>
-                                                    </div> 
-                                                    <div className="col-md-12 p-1 col-lg-12 col-sm-12 col-12">
-                                                        <label className="form-label">Your Email Address</label>
-                                                        <input readOnly value={this.state.email} onChange={(e)=>this.setState({email:e.target.value})} className="form-control" type="text" placeholder=""/>
-                                                    </div> 
-                                                    <div className="col-md-12 p-1 col-lg-12 col-sm-12 col-12">
-                                                        <label className="form-label">Your Mobile Number</label>
-                                                        <input maxlength="11" value={this.state.phone} onChange={(e)=>this.setState({phone:e.target.value})} className="form-control" type="text" placeholder=""/>
-                                                    </div>
-
-                                                    <div className="col-md-12 p-1 col-lg-12 col-sm-12 col-12">
-                                                        <label className="form-label">Your Profile Picture</label><br/>
-                                                        <img className="profile-image" src={this.state.previewImg}/>
-                                                        <input onChange={(e)=> this.setState({photo:e.target.files[0]})} type="file" className="form-control mt-2 mb-3"/>
-                                                    </div>
-                                                    <div className="col-md-12 p-1 col-lg-12 mb-4 col-sm-12 col-12">
-                                                        <label className="form-label">Your Current Address</label>
-                                                        <input value={this.state.address} onChange={(e)=>this.setState({address:e.target.value})} className="form-control" type="text" placeholder=""/>
-                                                    </div> 
-                                                    <div className="col-md-12 p-1 col-lg-12 col-sm-12 col-12">
-                                                        <button onClick={this.onUpdateProfile} className="btn btn-block btn-success">UPDATE PROFILE</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </Col>
-                         
-                            </Row>
-                        </Col>
-                    </Row>
-                </Container><br/><br/>
+            <Fragment>
+                <div className="container card mt-4 col-lg-5 col-md-5 col-sm-8 col-xs-12">
+                        <Form onSubmit={this.onUpdateProfile}>
+                                <h5 className="text-success text-center m-4"><b>YOUR PROFILE</b></h5><hr/>
+                          <Form.Group controlId="formBasicPassword">
+                            <Form.Label>Your Name</Form.Label>
+                            <Form.Control value={this.state.name} onChange={(e)=>this.setState({name:e.target.value})} type="text" placeholder="Enter old password" />
+                          </Form.Group>
+                          <Form.Group controlId="formBasicPassword">
+                            <Form.Label>Your Username</Form.Label>
+                            <Form.Control value={this.state.username} onChange={(e)=>this.setState({username:e.target.value})} type="text" placeholder="Enter new password" />
+                          </Form.Group>
+                          <Form.Group controlId="formPassword">
+                          <Form.Label>Your Email Address</Form.Label>
+                            <Form.Control value={this.state.email} onChange={(e)=>{this.setState({email:e.target.value})}} type="text" placeholder="Re-type new password" />
+                          </Form.Group>
+                          <Form.Group controlId="formPassword">
+                          <Form.Label>Your Mobile Number</Form.Label>
+                            <Form.Control maxLength="11" value={this.state.phone} onChange={(e)=>{this.setState({phone:e.target.value})}} type="text" placeholder="Re-type new password" />
+                          </Form.Group> 
+                          <Form.Group controlId="formPassword">
+                          <Form.Label>Your Profile Picture</Form.Label><br/>
+                            <img className="profile-image mb-2" src={this.state.previewImg}/>
+                            <Form.Control onChange={(e)=> this.setState({photo:e.target.files[0]})} type="file" placeholder="Re-type new password" />
+                          </Form.Group>
+                          <Form.Group controlId="formPassword">
+                          <Form.Label>Your Current Address</Form.Label>
+                            <Form.Control value={this.state.address} onChange={(e)=>{this.setState({address:e.target.value})}} type="text" placeholder="Re-type new password" />
+                          </Form.Group> 
+                          <Button disabled={this.state.isDisabled} variant="success" className="btn-block" type="submit">
+                          {this.state.updateBtn}
+                          </Button><br/><br/>
+                            <Link to="/">
+                            <p className="forget-pass">Back to Home</p>
+                            </Link>
+                        </Form>
+                    </div>
                 {this.PageRefresh()}
             </Fragment>
         );

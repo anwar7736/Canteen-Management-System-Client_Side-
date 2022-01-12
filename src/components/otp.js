@@ -25,7 +25,7 @@ componentDidMount(){
 	}
 
 	const timer = setInterval(this.countDown,1000); 
-	Axios.post('http://127.0.0.1:8000/api/GetOTPExpiration', {email : email})
+	Axios.post('https://api.coderanwar.com/api/GetOTPExpiration', {email : email})
 	.then(response=>{
 		if(response.data < 0)
 		{
@@ -96,7 +96,7 @@ OTPVerify=(e)=>{
 	MyForm.append('email', email);
 	MyForm.append('otp', otp);
 
-	Axios.post('http://127.0.0.1:8000/api/OTPVerification', MyForm)
+	Axios.post('https://api.coderanwar.com/api/OTPVerification', MyForm)
 	.then(response=>{
 		this.setState({verifyBtn : 'Verify OTP', isDisabled : true});
 		if(response.status==200 && response.data==1)

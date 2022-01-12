@@ -7,8 +7,8 @@ import Axios from 'axios';
 
 class Login extends React.Component{
 		state = {
-			username : '',
-			password : '',
+			username : 'anwar1234',
+			password : '123',
 			isChecked : true,
 			redirectStatus : false,
 			isDisabled : false,
@@ -46,7 +46,7 @@ Login=(e)=>{
 	}
 	else{
 		 this.setState({isDisabled : true});
-		Axios.post('http://127.0.0.1:8000/api/login', {username:username, password:password})
+		Axios.post('https://api.coderanwar.com/api/login', {username:username, password:password})
                  .then(response=>{
        //              if(response.status==200 && response.data[0]==='admin')
        //              {
