@@ -130,7 +130,7 @@ class DesktopNavbar extends React.Component{
                             </Nav.Link>
 
                             <Nav.Link className="text-center" >
-                                <Link to="#">
+                                <Link to="/send_message">
                                     <div className="nav-item-div">
                                         <i className="fa mx-1 fa-envelope"/>Send Message 
                                     </div>
@@ -141,7 +141,7 @@ class DesktopNavbar extends React.Component{
                                     <Link to="#"className="text-danger" >Day Wise Meal Report</Link>
                                 </NavDropdown.Item>
                                 <NavDropdown.Item>
-                                    <Link to="#" className="text-success">Daily Meal Schedule</Link>
+                                    <Link to="/dailyMealItem" className="text-success">Daily Meal Schedule</Link>
                                 </NavDropdown.Item>
                                 <NavDropdown.Item>
                                     <Link to="#" className="text-primary">Message Details</Link>

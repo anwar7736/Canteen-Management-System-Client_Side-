@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import {Form, Button, Container, Row, Col} from 'react-bootstrap';
 import cogoToast from 'cogo-toast';
+import API from '../api/API';
 import {Link} from "react-router-dom";
 import {Redirect} from "react-router";
 import Axios from 'axios';
@@ -32,7 +33,7 @@ EmailVerify=(e)=>{
 	}
 	else{
 		this.setState({verifyBtn : 'Verifying....', isDisabled : true});
-		Axios.post('https://api.coderanwar.com/api/EmailVerification', {email:email})
+		Axios.post(API.verifyEmail, {email:email})
                  .then(response=>{
                     if(response.status==200 && response.data=='1')
                     {

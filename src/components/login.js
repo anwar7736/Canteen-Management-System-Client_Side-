@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import {Form, Button, Container, Row, Col} from 'react-bootstrap';
 import cogoToast from 'cogo-toast';
+import API from '../api/API';
 import {Link} from "react-router-dom";
 import {Redirect} from 'react-router-dom';
 import Axios from 'axios';
@@ -46,7 +47,7 @@ Login=(e)=>{
 	}
 	else{
 		 this.setState({isDisabled : true});
-		Axios.post('https://api.coderanwar.com/api/login', {username:username, password:password})
+		Axios.post(API.login, {username:username, password:password})
                  .then(response=>{
        //              if(response.status==200 && response.data[0]==='admin')
        //              {

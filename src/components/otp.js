@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import {Form, Button, Container, Row, Col} from 'react-bootstrap';
 import cogoToast from 'cogo-toast';
+import API from '../api/API';
 import {Link} from "react-router-dom";
 import {Redirect} from "react-router";
 import Axios from 'axios';
@@ -25,7 +26,7 @@ componentDidMount(){
 	}
 
 	const timer = setInterval(this.countDown,1000); 
-	Axios.post('https://api.coderanwar.com/api/GetOTPExpiration', {email : email})
+	Axios.post(API.GetOTPExpiration, {email : email})
 	.then(response=>{
 		if(response.data < 0)
 		{
@@ -96,7 +97,7 @@ OTPVerify=(e)=>{
 	MyForm.append('email', email);
 	MyForm.append('otp', otp);
 
-	Axios.post('https://api.coderanwar.com/api/OTPVerification', MyForm)
+	Axios.post(API.OTPVerification, MyForm)
 	.then(response=>{
 		this.setState({verifyBtn : 'Verify OTP', isDisabled : true});
 		if(response.status==200 && response.data==1)

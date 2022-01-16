@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import {Form, Button, Container, Row, Col} from 'react-bootstrap';
 import cogoToast from 'cogo-toast';
+import API from '../api/API';
 import {Redirect} from 'react-router-dom';
 import {Link} from "react-router-dom";
 import Axios from 'axios';
@@ -53,7 +54,7 @@ ChangePassword=(e)=>{
 		MyForm.append('id', id);
 		MyForm.append('oldpass', old_pass);
 		MyForm.append('newpass', new_pass);
-		Axios.post('https://api.coderanwar.com/api/ChangePassword', MyForm)
+		Axios.post(API.ChangePassword, MyForm)
                  .then(response=>{
                    if(response.status===200 && response.data===1)
                    {

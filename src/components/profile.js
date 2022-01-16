@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import {Button, Card, Col, Container, Form, Row} from "react-bootstrap";
 import {Link} from 'react-router-dom';
+import API from '../api/API';
 import {Redirect} from 'react-router';
 import cogoToast from 'cogo-toast';
 import Axios from 'axios';
@@ -19,7 +20,7 @@ class Profile extends Component {
         }
     componentDidMount(){
         let user_id= localStorage.getItem('id');
-        Axios.get('https://api.coderanwar.com/api/GetUserProfile/'+user_id)
+        Axios.get(API.GetUserProfile+"/"+user_id)
         .then(response=>{
             if(response.status===200)
             {
@@ -104,7 +105,7 @@ class Profile extends Component {
             MyForm.append('photo', photo);
             MyForm.append('address', address);
 
-            Axios.post('https://api.coderanwar.com/api/UpdateProfile', MyForm)
+            Axios.post(API.UpdateProfile, MyForm)
             .then(response=>{                
                 if(typeof response.data === 'string')
                 {
@@ -151,19 +152,19 @@ class Profile extends Component {
                                 <h5 className="text-success text-center m-4"><b>YOUR PROFILE</b></h5><hr/>
                           <Form.Group controlId="formBasicPassword">
                             <Form.Label>Your Name</Form.Label>
-                            <Form.Control value={this.state.name} onChange={(e)=>this.setState({name:e.target.value})} type="text" placeholder="Enter old password" />
+                            <Form.Control value={this.state.name} onChange={(e)=>this.setState({name:e.target.value})} type="text" placeholder="Enter your name" />
                           </Form.Group>
                           <Form.Group controlId="formBasicPassword">
                             <Form.Label>Your Username</Form.Label>
-                            <Form.Control value={this.state.username} onChange={(e)=>this.setState({username:e.target.value})} type="text" placeholder="Enter new password" />
+                            <Form.Control value={this.state.username} onChange={(e)=>this.setState({username:e.target.value})} type="text" placeholder="Enter your username" />
                           </Form.Group>
                           <Form.Group controlId="formPassword">
                           <Form.Label>Your Email Address</Form.Label>
-                            <Form.Control value={this.state.email} onChange={(e)=>{this.setState({email:e.target.value})}} type="text" placeholder="Re-type new password" />
+                            <Form.Control value={this.state.email} onChange={(e)=>{this.setState({email:e.target.value})}} type="text" placeholder="Enter your valid email address..." />
                           </Form.Group>
                           <Form.Group controlId="formPassword">
                           <Form.Label>Your Mobile Number</Form.Label>
-                            <Form.Control maxLength="11" value={this.state.phone} onChange={(e)=>{this.setState({phone:e.target.value})}} type="text" placeholder="Re-type new password" />
+                            <Form.Control maxLength="11" value={this.state.phone} onChange={(e)=>{this.setState({phone:e.target.value})}} type="text" placeholder="Enter your valid mobile number..." />
                           </Form.Group> 
                           <Form.Group controlId="formPassword">
                           <Form.Label>Your Profile Picture</Form.Label><br/>
@@ -172,13 +173,13 @@ class Profile extends Component {
                           </Form.Group>
                           <Form.Group controlId="formPassword">
                           <Form.Label>Your Current Address</Form.Label>
-                            <Form.Control value={this.state.address} onChange={(e)=>{this.setState({address:e.target.value})}} type="text" placeholder="Re-type new password" />
+                            <Form.Control value={this.state.address} onChange={(e)=>{this.setState({address:e.target.value})}} type="text" placeholder="Enter your current location..." />
                           </Form.Group> 
                           <Button disabled={this.state.isDisabled} variant="success" className="btn-block" type="submit">
                           {this.state.updateBtn}
                           </Button><br/><br/>
                             <Link to="/">
-                            <p className="forget-pass">Back to Home</p>
+                            <p className="forget-pass">Back to Home Page</p>
                             </Link>
                         </Form>
                     </div>

@@ -7,6 +7,8 @@ import OTPVerify from '../pages/OTPPage';
 import ForgetPassword from '../pages/ResetPage';
 import ChangePassword from '../pages/ChangePassword';
 import ProfilePage from '../pages/ProfilePage';
+import DailyMealItemPage from '../pages/DailyMealItemPage';
+import SendMessagePage from '../pages/SendMessagePage';
 import PageNotFound from '../pages/PageNotFound';
 
 class Routes extends React.Component{
@@ -20,6 +22,8 @@ class Routes extends React.Component{
                     <Route exact path="/reset_password" render={(props)=> <ForgetPassword {...props} key={ Date.now() } />} />
                     <Route exact path="/change_password" render={(props)=> <ChangePassword {...props} key={ Date.now() } />} />
                     <Route exact path="/user_profile" render={(props)=> <ProfilePage {...props} key={ Date.now() } />} />
+                    <Route exact path="/dailyMealItem" render={(props)=> <DailyMealItemPage {...props} key={ Date.now() } />} />
+                    <Route exact path="/send_message" render={(props)=> <SendMessagePage {...props} key={ Date.now() } />} />
                     <Route exact component={PageNotFound} />
                 </Switch>
        
