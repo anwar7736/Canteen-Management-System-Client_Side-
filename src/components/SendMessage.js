@@ -7,16 +7,13 @@ import {Link} from "react-router-dom";
 import Axios from 'axios';
 
 class SendMessage extends React.Component{
-	constructor(){
-		super()
-		this.state = {
+		state = {
 			author_name : '',
 			msg_title : '',
 			msg_body : '',
 			submitBtn : 'Submit',
 			isDisabled : false,
 		}
-	}
 	componentDidMount() {
 
 	}
@@ -43,7 +40,8 @@ SendMessage=(e)=>{
 
 		this.setState({submitBtn : 'Submitting...', isDisabled : true});
 		let MyForm = new FormData();
-		MyForm.append('id', id);
+		MyForm.append('author_id', id);
+		MyForm.append('author_role', 'user');
 		MyForm.append('author_name', author_name);
 		MyForm.append('msg_title', msg_title);
 		MyForm.append('msg_body', msg_body);
@@ -55,9 +53,9 @@ SendMessage=(e)=>{
 						   this.setState({
 							submitBtn : 'Submit', 
 							isDisabled : false, 
-							old_pass : '',
-							new_pass : '',
-							confirm_pass : ''
+							author_name : '',
+							msg_title : '',
+							msg_body : ''
 						});
                    }
                    else if(response.status===200 && response.data===0)
@@ -65,6 +63,9 @@ SendMessage=(e)=>{
 						this.setState({
 							submitBtn : 'Submit', 
 							isDisabled : false, 
+							author_name : '',
+							msg_title : '',
+							msg_body : ''
 						});
 						cogoToast.error('Something went wrong!');
                    }
@@ -79,14 +80,14 @@ SendMessage=(e)=>{
  		<Fragment>
  			<div className="container mt-4 col-lg-5 col-md-5 col-sm-8 col-xs-12">
  						<Form onSubmit={this.SendMessage}>
- 								<h2 className="text-center text-danger">Send Message</h2>
+ 								<h2 className="text-center text-danger">Send Message To Admin</h2>
 						  <Form.Group controlId="formBasicPassword">
 						    <Form.Label>Enter Your Fullname</Form.Label>
-						    <Form.Control value={this.state.old_pass} onChange={(e)=>{this.setState({author_name:e.target.value})}} type="password" placeholder="Enter your fullname..." />
+						    <Form.Control value={this.state.author_name} onChange={(e)=>{this.setState({author_name:e.target.value})}} type="text" placeholder="Enter your fullname..." />
 						  </Form.Group>
 						  <Form.Group controlId="formBasicPassword">
 						    <Form.Label>Enter Message Title</Form.Label>
-						    <Form.Control value={this.state.new_pass} onChange={(e)=>{this.setState({msg_title:e.target.value})}} type="password" placeholder="Enter message title..." />
+						    <Form.Control value={this.state.msg_title} onChange={(e)=>{this.setState({msg_title:e.target.value})}} type="text" placeholder="Enter message title..." />
 						  </Form.Group>
 						  <Form.Group controlId="formPassword">
 						  <Form.Label>Enter Message Body</Form.Label>

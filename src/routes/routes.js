@@ -9,6 +9,10 @@ import ChangePassword from '../pages/ChangePassword';
 import ProfilePage from '../pages/ProfilePage';
 import DailyMealItemPage from '../pages/DailyMealItemPage';
 import SendMessagePage from '../pages/SendMessagePage';
+import AdminNotificationPage from '../pages/AdminNotificationPage';
+import MyNotificationPage from '../pages/MyNotificationPage';
+
+
 import PageNotFound from '../pages/PageNotFound';
 
 class Routes extends React.Component{
@@ -24,6 +28,8 @@ class Routes extends React.Component{
                     <Route exact path="/user_profile" render={(props)=> <ProfilePage {...props} key={ Date.now() } />} />
                     <Route exact path="/dailyMealItem" render={(props)=> <DailyMealItemPage {...props} key={ Date.now() } />} />
                     <Route exact path="/send_message" render={(props)=> <SendMessagePage {...props} key={ Date.now() } />} />
+                    <Route exact path="/admin_notification" render={(props)=> <AdminNotificationPage {...props} key={ Date.now() } />} />
+                    <Route exact path="/all_notification" render={(props)=> <MyNotificationPage {...props} key={ Date.now() } />} />
                     <Route exact component={PageNotFound} />
                 </Switch>
        

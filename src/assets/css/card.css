@@ -17,3 +17,11 @@
     height: 50px;
     object-fit: cover;
 }
+
+.unread-msg{
+    background: tomato;
+    height: 7px;
+    width: 7px;
+    border-radius: 50%;
+    margin:10px;
+}

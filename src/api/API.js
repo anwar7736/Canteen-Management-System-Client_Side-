@@ -10,6 +10,11 @@ class API {
 	static UpdateProfile   = this.baseURL + "UpdateProfile";
 	static GetDailyMealItem   = this.baseURL + "GetDailyMealItem";
 	static SendMessage   = this.baseURL + "SendMessage";
+	static CountLastest  = this.baseURL + "CountLastestNotification";
+	static SetUnreadStatus  = this.baseURL + "SetUnreadStatus";
+	static GetAdminNotification  = this.baseURL + "GetAdminNotificationByUser";
+	static GetSelfNotification  = this.baseURL + "GetSelfCreatedNotification";
+	static SetReadStatus  = this.baseURL + "SetReadStatus";
 	
 }
 export default API;

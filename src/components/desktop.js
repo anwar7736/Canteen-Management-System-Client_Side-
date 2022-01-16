@@ -1,17 +1,28 @@
 import React, {Component, Fragment} from 'react';
 import {Nav, Navbar, NavDropdown} from 'react-bootstrap';
 import {Link} from "react-router-dom";
+import API from '../api/API';
 import {Redirect} from "react-router-dom";
-
+import Axios from 'axios';
+import cogoToast from 'cogo-toast';
 class DesktopNavbar extends React.Component{
-    constructor(){
-        super()
-        this.state = {
+    state = {
+            user_id : '',
+            countLatest : '',
             login: '',
             redirectStatus : false,
         }
-    }
+    
     componentDidMount(){
+            const user_id = localStorage.getItem('id');
+            this.setState({user_id : user_id});
+            Axios.get(API.CountLastest + "/" + user_id)
+            .then(res=>{
+                this.setState({countLatest :  res.data});
+            })
+            .catch(err=>{
+
+            })
            if(localStorage.getItem('login')!=null)
             {
                 this.setState({login : true});
@@ -36,6 +47,17 @@ class DesktopNavbar extends React.Component{
         this.setState({redirectStatus : true});
     }
 
+    changeLatest=()=>{
+        const {user_id} = this.state;
+        Axios.get(API.SetUnreadStatus + "/" + user_id)
+        .then(res=>{
+            this.componentDidMount();
+        })
+        .catch(err=>{
+
+        });
+    }
+
     RedirectToLoginPage=()=>{
         if(this.state.redirectStatus==true)
         {
@@ -46,7 +68,7 @@ class DesktopNavbar extends React.Component{
     }
 
  render(){
-    
+    const {countLatest}  = this.state;
     const login_logout_btn = 
         
         this.state.login ?
@@ -56,8 +78,8 @@ class DesktopNavbar extends React.Component{
                                 <span className="text-muted">{localStorage.getItem('name')}</span>
                             </NavDropdown.Item>
                             <NavDropdown.Divider />
-                            <NavDropdown.Item>
-                                 <Link to="/notification" className="btn"><i className="fas h4 fa-bell"></i> <sup><span className="badge text-white bg-danger">1</span></sup></Link>
+                            <NavDropdown.Item onClick={this.changeLatest}>
+                                 <Link to="/admin_notification" className="btn text-danger"><i className="fas h4 fa-bell"></i> Notification <sup><span className="badge text-white bg-danger">{countLatest == 0 ? "" : countLatest}</span></sup></Link>
                             </NavDropdown.Item> 
                              <NavDropdown.Item>
                                 <Link to="/user_profile"><span className="btn text-success"><i className="fa h4 fa-user"></i> My Profile</span></Link>
@@ -144,7 +166,7 @@ class DesktopNavbar extends React.Component{
                                     <Link to="/dailyMealItem" className="text-success">Daily Meal Schedule</Link>
                                 </NavDropdown.Item>
                                 <NavDropdown.Item>
-                                    <Link to="#" className="text-primary">Message Details</Link>
+                                    <Link to="/all_notification" className="text-primary">All Sending Messages</Link>
                                 </NavDropdown.Item>
                                 <NavDropdown.Item>
                                     <Link to="#" className="text-dark">Payment Statement</Link>
