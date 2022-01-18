@@ -15,6 +15,14 @@ class API {
 	static GetAdminNotification  = this.baseURL + "GetAdminNotificationByUser";
 	static GetSelfNotification  = this.baseURL + "GetSelfCreatedNotification";
 	static SetReadStatus  = this.baseURL + "SetReadStatus";
+	static OrderDailyMeal  = this.baseURL + "OrderDailyMeal";
+	static GetTodayOrderInfo  = this.baseURL + "GetTodayOrderInfo";
+	static ChangeOrderedMeal  = this.baseURL + "ChangeOrderedMeal";
+	static DeleteTodayOrder  = this.baseURL + "DeleteTodayOrderedMeal/";
+	static RestoreTodayOrder  = this.baseURL + "RestoreTodayOrderedMeal/";
+
+
+
 	
 }
 export default API;

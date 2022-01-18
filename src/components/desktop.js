@@ -136,9 +136,9 @@ class DesktopNavbar extends React.Component{
 				      	 	</Link>
 				      </Nav.Link>
 				      <Nav.Link className="text-center" >
-                                <Link to="#">
+                                <Link to="/order_daily_meal">
                                     <div className="nav-item-div">
-                                        <i className="fa mx-1 fa-list-ul"/>Order Meal
+                                        <i className="fa mx-1 fa-list-ul"/>Order Daily Meal
                                     </div>
                                 </Link>
                             </Nav.Link>

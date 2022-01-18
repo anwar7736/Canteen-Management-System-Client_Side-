@@ -84,7 +84,7 @@ Login=(e)=>{
                          // localStorage.setItem('email', response.data[1]['email']);
                          // localStorage.setItem('phone', response.data[1]['phone']);
                          localStorage.setItem('photo', response.data[1]['photo']);
-                         // localStorage.setItem('address', response.data[1]['address']);
+                         localStorage.setItem('token_no', response.data[1]['token_no']);
                          if(this.state.isChecked==true)
                          {
                          	localStorage.setItem('user', this.state.username);

@@ -46,7 +46,7 @@ class MyNotification extends React.Component{
 		})
 		return(
 				<>
-					<h2 className="text-center m-3 text-danger">All Notification From Admin</h2>
+					<h2 className="text-center m-3 text-danger">All Previous Sending Notification</h2>
 					{notification_item}
 				</>
 			);
