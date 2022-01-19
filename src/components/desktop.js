@@ -160,7 +160,7 @@ class DesktopNavbar extends React.Component{
                             </Nav.Link>
                           <i className="fa fa-report-alt"/><NavDropdown className="nav-item-div" title="Reports" id="navbarScrollingDropdown">
                                  <NavDropdown.Item>
-                                    <Link to="#"className="text-danger" >Day Wise Meal Report</Link>
+                                    <Link to="/day_wise_meal"className="text-danger" >Day Wise Meal Report</Link>
                                 </NavDropdown.Item>
                                 <NavDropdown.Item>
                                     <Link to="/dailyMealItem" className="text-success">Daily Meal Schedule</Link>

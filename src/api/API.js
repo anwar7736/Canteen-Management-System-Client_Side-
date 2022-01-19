@@ -20,6 +20,8 @@ class API {
 	static ChangeOrderedMeal  = this.baseURL + "ChangeOrderedMeal";
 	static DeleteTodayOrder  = this.baseURL + "DeleteTodayOrderedMeal/";
 	static RestoreTodayOrder  = this.baseURL + "RestoreTodayOrderedMeal/";
+	static GetAllMealByUser  = this.baseURL + "GetAllMealByUser/";
+	static GetMealFilterByDate  = this.baseURL + "GetMealFilterByDate";
 
 
 
