@@ -25,3 +25,8 @@
     border-radius: 50%;
     margin:10px;
 }
+
+.card-item{
+    font-weight: bolder;
+    border: 3px solid black;
+}

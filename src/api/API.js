@@ -21,7 +21,11 @@ class API {
 	static DeleteTodayOrder  = this.baseURL + "DeleteTodayOrderedMeal/";
 	static RestoreTodayOrder  = this.baseURL + "RestoreTodayOrderedMeal/";
 	static GetAllMealByUser  = this.baseURL + "GetAllMealByUser/";
-	static GetMealFilterByDate  = this.baseURL + "GetMealFilterByDate";
+	static GetMealFilterByDate  = this.baseURL + "GetMealFilterByDate/";
+	static CountDashboardSummary  = this.baseURL + "CountDashboardSummary/";
+	static LastFivePaymentDetails  = this.baseURL + "LastFivePaymentDetails/";
+	static LastFiveMonthsStatements  = this.baseURL + "LastFiveMonthsStatements/";
+	static LastSevenDaysMealReport  = this.baseURL + "LastSevenDaysMealReport/";
 
 
 

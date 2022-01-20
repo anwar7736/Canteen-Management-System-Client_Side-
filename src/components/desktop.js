@@ -111,7 +111,7 @@ class DesktopNavbar extends React.Component{
  	return(
  		<Fragment>
  			<Navbar className="w-100 nav-bar sticky-top" collapseOnSelect expand="lg" variant="light">
-				  <Link to="#">
+				  <Link to="/">
 				  <Navbar.Brand style={{cursor:'pointer'}}>
 				  		<img className="nav-logo" src="../cms.webp" alt="NavLogo"/>
 				  </Navbar.Brand>
@@ -120,7 +120,7 @@ class DesktopNavbar extends React.Component{
 				  <Navbar.Collapse id="responsive-navbar-nav">
 				    <Nav className="mr-auto">
 				      <Nav.Link className="text-center">
-				      	 	<Link activeClassName="d-none" to="#">
+				      	 	<Link activeClassName="d-none" to="/">
 				      	 		<div className="nav-item-div">
 				      	 		 	<i className="fa mx-1 fa-home"/> Dashboard
 				      			 </div>

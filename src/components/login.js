@@ -134,17 +134,10 @@ passwordShowHide=()=>{
 RedirectToHomePage=()=>{
 	if(this.state.redirectStatus==true)
 	{
-		if(localStorage.getItem('email_verified'))
-		{
 			return (
-				<Redirect to="/otp_verification" />
+				<Redirect to="/" />
 				);
-		}
-		else {
-			return (
-				<Redirect to="/user_profile" />
-				);
-		}
+		
 	}
 }
 
