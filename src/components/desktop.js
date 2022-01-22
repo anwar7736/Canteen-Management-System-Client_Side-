@@ -144,7 +144,7 @@ class DesktopNavbar extends React.Component{
                             </Nav.Link>
 
                             <Nav.Link className="text-center" >
-                                <Link to="#">
+                                <Link to="make_payment">
                                     <div className="nav-item-div">
                                         <i className="fa mx-1 fa-shopping-bag"/>Make Payment
                                     </div>
