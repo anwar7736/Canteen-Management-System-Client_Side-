@@ -27,6 +27,8 @@ class Dashboard extends React.Component{
 
         componentDidMount=()=>{
          const user_id = localStorage.getItem('id');
+         const token_no = localStorage.getItem('token_no');
+
          this.setState({user_id : user_id});
 
          Axios.get(API.CountDashboardSummary + user_id)
@@ -60,14 +62,14 @@ class Dashboard extends React.Component{
             cogoToast.error('Something went wrong!');
          }); 
 
-         // Axios.get(API.LastFivePaymentDetails + user_id)
-         // .then(response=>{
-         //     this.setState({LastFivePaymentDetails : response.data});
+         Axios.get(API.LastFivePaymentDetails + token_no)
+         .then(response=>{
+             this.setState({LastFivePaymentDetails : response.data});
 
-         // })
-         // .catch(error=>{
-         //    cogoToast.error('Something went wrong!');
-         // });
+         })
+         .catch(error=>{
+            cogoToast.error('Something went wrong!');
+         });
 
          // Axios.get(API.LastFiveMonthsStatements + user_id)
          // .then(response=>{
@@ -81,7 +83,7 @@ class Dashboard extends React.Component{
 
 
  render(){
-    const {from_date, to_date} = this.state;
+
     const columns = [
             {
                 name: 'Meal Given Date',
@@ -114,12 +116,53 @@ class Dashboard extends React.Component{
                 selector: 'total_amount',
                 sortable: true,
             },
+        ]; 
+
+        const payments = [
+            {
+                name: 'Date',
+                selector: 'payment_date',
+                sortable: true,
+
+            }, 
+            {
+                name: 'Name',
+                selector: 'name',
+                sortable: true,
+
+            },
+            {
+                name: 'Token No',
+                selector: 'token_no',
+                sortable: false,
+            },
+            {
+                name: 'Amount',
+                selector: 'amount',
+                sortable: true,
+            },
+            {
+                name: 'TrxID',
+                selector: 'transaction_id',
+                sortable: true,
+            }, 
+            {
+                name: 'Status',
+                selector: 'status',
+                sortable: true,
+            }, 
         ];
 
+        const months = ["January", "February", "March", 
+                        "April", "May", "June", 
+                        "July", "August", "September", 
+                        "October", "November", "December"];
  	return(
  		<Fragment>
         <div className="container" style={{marginBottom : '100px'}}>   
             <h4 className="text-center bg-danger text-light p-2 my-2">Dashboard Summary</h4>
+             <h3 className="text-center bg-light text-success p-2 my-2">Month of <span>{months[new Date().getMonth()]}</span> <span className="text-danger">{new Date().getFullYear()}</span></h3>
+             <hr/>
             <div className="row m-3">
                 <div className="col-md-3 mb-3">
                     <div class="card">
@@ -206,8 +249,8 @@ class Dashboard extends React.Component{
                         noHeader={true}
                         paginationPerPage={5}
                         pagination={true}
-                        columns={columns}
-                        data={this.state.LastSevenDaysMealReport}
+                        columns={payments}
+                        data={this.state.LastFivePaymentDetails}
                     />
                 </div>
                 <div className="col-md-6">

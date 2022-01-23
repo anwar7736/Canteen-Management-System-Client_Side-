@@ -21,6 +21,8 @@ class API {
 	static DeleteTodayOrder  = this.baseURL + "DeleteTodayOrderedMeal/";
 	static RestoreTodayOrder  = this.baseURL + "RestoreTodayOrderedMeal/";
 	static GetAllMealByUser  = this.baseURL + "GetAllMealByUser/";
+	static PaymentDetailsByUser  = this.baseURL + "PaymentDetailsByUser/";
+	static PaymentDetailsFilterByDate  = this.baseURL + "PaymentDetailsFilterByDate";
 	static GetMealFilterByDate  = this.baseURL + "GetMealFilterByDate/";
 	static CountDashboardSummary  = this.baseURL + "CountDashboardSummary/";
 	static LastFivePaymentDetails  = this.baseURL + "LastFivePaymentDetails/";

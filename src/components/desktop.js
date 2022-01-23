@@ -85,6 +85,9 @@ class DesktopNavbar extends React.Component{
                                 <Link to="/user_profile"><span className="btn text-success"><i className="fa h4 fa-user"></i> My Profile</span></Link>
                             </NavDropdown.Item>
                             <NavDropdown.Item>
+                                <Link to="/user_token"><span className="btn text-dark"><i className="fa fa-list-ul"></i> View My Token</span></Link>
+                            </NavDropdown.Item>
+                            <NavDropdown.Item>
                                 <Link to="/change_password"><span className="btn text-primary"><i class="fas fa-key"></i> Change Password</span></Link>
                             </NavDropdown.Item> 
                             <NavDropdown.Item>
@@ -169,7 +172,7 @@ class DesktopNavbar extends React.Component{
                                     <Link to="/all_notification" className="text-primary">All Sending Messages</Link>
                                 </NavDropdown.Item>
                                 <NavDropdown.Item>
-                                    <Link to="#" className="text-dark">Payment Statement</Link>
+                                    <Link to="/payment_summary" className="text-dark">Payment Statement</Link>
                                 </NavDropdown.Item>
                                 <NavDropdown.Item>
                                     <Link to="#" className="text-danger">Monthly Statement</Link>

@@ -6,19 +6,19 @@ import API from '../api/API';
 import cogoToast from 'cogo-toast';
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';  
 
-class DayWiseMeal extends React.Component{
+class PaymentSummary extends React.Component{
         state={
             dataTable : [],
-            user_id   : '',
+            token_no   : '',
             from_date : '',
             to_date   : '',
         }
 
         componentDidMount=()=>{
-         const user_id = localStorage.getItem('id');
-         this.setState({user_id : user_id});
+         const token_no = localStorage.getItem('token_no');
+         this.setState({token_no : token_no});
 
-         Axios.get(API.GetAllMealByUser + user_id)
+         Axios.get(API.PaymentDetailsByUser + token_no)
          .then(response=>{
              this.setState({dataTable : response.data});
 
@@ -34,7 +34,7 @@ class DayWiseMeal extends React.Component{
         }
      
       filterByDate=()=>{
-           const {user_id, from_date, to_date} = this.state;
+           const {token_no, from_date, to_date} = this.state;
 
            if(from_date=='' || to_date=='')
            {
@@ -42,11 +42,11 @@ class DayWiseMeal extends React.Component{
            }
            else{
                 let myData = new FormData();
-                myData.append('user_id', user_id);
+                myData.append('token_no', token_no);
                 myData.append('from_date', from_date);
                 myData.append('to_date', to_date);
 
-              Axios.post(API.GetMealFilterByDate, myData)
+              Axios.post(API.PaymentDetailsFilterByDate, myData)
              .then(response=>{
                  this.setState({dataTable : response.data});
              })
@@ -58,44 +58,58 @@ class DayWiseMeal extends React.Component{
 
  render(){
     const {from_date, to_date} = this.state;
-    const columns = [
+
+     const payments = [
             {
-                name: 'Meal Given Date',
-                selector: 'meal_given_date',
+                name: 'Payment Date',
+                selector: 'payment_date',
                 sortable: true,
 
-            },
+            },  
+            {
+                name: 'Payment Time',
+                selector: 'payment_time',
+                sortable: true,
+
+            }, 
             {
                 name: 'Token No',
                 selector: 'token_no',
                 sortable: false,
             },
             {
-                name: 'Lunch',
-                selector: 'lunch',
+                name: 'Name',
+                selector: 'name',
+                sortable: true,
+
+            },
+            {
+                name: 'Phone',
+                selector: 'phone',
+                sortable: true,
+
+            },
+            {
+                name: 'Amount',
+                selector: 'amount',
                 sortable: true,
             },
             {
-                name: 'Dinner',
-                selector: 'dinner',
+                name: 'TrxID',
+                selector: 'transaction_id',
                 sortable: true,
             }, 
             {
-                name: 'Total Meal',
-                selector: 'total_meal',
+                name: 'Status',
+                selector: 'status',
                 sortable: true,
             }, 
-            {
-                name: 'Total Amount',
-                selector: 'total_amount',
-                sortable: true,
-            },
         ];
 
  	return(
  		<Fragment>
  			  <div className="container-fluid animated zoomIn transaction-preview">
-                    <h3 className="heading-title text-danger text-center m-3">Day Wise Meal Report</h3><hr/>
+                    <h3 className="heading-title text-danger text-center m-3">All Payment Details</h3><hr/>
                     <div className="input-group">
                         From : <input value={from_date} onChange={(e)=> {this.setState({from_date:e.target.value})}} className="w-25 form-control form-control-sm mx-2" type="date"/>
                         To : <input value={to_date} onChange={(e)=> {this.setState({to_date:e.target.value})}} className="w-25 form-control form-control-sm mx-2" type="date"/>
@@ -108,7 +122,7 @@ class DayWiseMeal extends React.Component{
                         noHeader={true}
                         paginationPerPage={5}
                         pagination={true}
-                        columns={columns}
+                        columns={payments}
                         data={this.state.dataTable}
                     />
                 <br/>
@@ -119,4 +133,4 @@ class DayWiseMeal extends React.Component{
  		)
  }
 }
-export default DayWiseMeal;
+export default PaymentSummary;

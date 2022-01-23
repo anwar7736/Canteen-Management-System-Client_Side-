@@ -234,6 +234,7 @@ class UserList extends React.Component{
                                             <h3 className="text-danger text-center">Place Your Today Order</h3><br/>
                                            <p className= {undoBtn + " text-center text-success"} > <strong>Your today order has been deleted!</strong> <span className="text-danger" onClick={this.restoreOrder} style={{cursor:'pointer'}}>Undo</span></p>
                                             <button onClick={this.handleOpen} className="btn btn-info" disabled={isDisabled}>Order Today Meal</button>
+                                            <button onClick={this.handleOpen} className="btn btn-danger" disabled={isDisabled} style={{float:'right'}}>Order Guest Meal</button>
                                             <hr className="bg-secondary"/>
                                                 <DataTable
                                                     noHeader={true}
