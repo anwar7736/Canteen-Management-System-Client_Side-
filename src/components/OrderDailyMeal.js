@@ -9,8 +9,8 @@ import cogoToast from 'cogo-toast';
 class UserList extends React.Component{
         state={
             dataTable : [],
-            lunch : false,
-            dinner : false,
+            lunch : '0',
+            dinner : '0',
             show:false,
             deleteID:"",
             editID:"",
@@ -48,7 +48,7 @@ class UserList extends React.Component{
     onSubmitHandler=()=>
     {
         const {lunch, dinner, editID, user_id, token_no} = this.state;
-        if(!lunch && !dinner)
+        if(lunch=='0'  && dinner=='0')
         {
             cogoToast.warn('Please choose your meal!')
         }
@@ -101,7 +101,8 @@ class UserList extends React.Component{
 
                       cogoToast.error('Something went wrong!');
                  })
-        }
+        
+     }
     }
     resetForm=()=>{
         this.setState({ lunch : '',dinner : '', btnText : 'Save Order', modalTitle : 'Order Today Meal', editID : '', deleteID : ''});
@@ -233,8 +234,7 @@ class UserList extends React.Component{
  			 <div className="container-fluid mt-3 animated zoomIn">
                                             <h3 className="text-danger text-center">Place Your Today Order</h3><br/>
                                            <p className= {undoBtn + " text-center text-success"} > <strong>Your today order has been deleted!</strong> <span className="text-danger" onClick={this.restoreOrder} style={{cursor:'pointer'}}>Undo</span></p>
-                                            <button onClick={this.handleOpen} className="btn btn-info" disabled={isDisabled}>Order Today Meal</button>
-                                            <button onClick={this.handleOpen} className="btn btn-danger" disabled={isDisabled} style={{float:'right'}}>Order Guest Meal</button>
+                                            <center><button onClick={this.handleOpen} className="btn btn-info" disabled={isDisabled}>Order Today Meal</button></center>
                                             <hr className="bg-secondary"/>
                                                 <DataTable
                                                     noHeader={true}
@@ -250,15 +250,17 @@ class UserList extends React.Component{
                         <strong><p className="text-danger">{this.state.modalTitle}</p></strong>
                     </Modal.Header>
                     <Modal.Body>
-                        <label className="form-label">Your Name</label>
+                        <label className="form-label"><b>Your Name</b></label>
                         <input value={name} disabled className="form-control form-control-sm" type="text"/> 
-                        <label className="form-label ">Your Token No</label>
+                        <label className="form-label "><b>Your Token No</b></label>
                         <input value={token_no} disabled className="form-control form-control-sm" type="text"/>
-                         <label className="form-label">Meal Given Date</label>
+                         <label className="form-label"><b>Meal Given Date</b></label>
                         <input value={given_date} disabled className="form-control form-control-sm" type="text"/><br/>
-                        <label className="form-label">Choose Your Meal</label><br/>
-                        <label className="form-label"><input type="checkbox" onChange={(e)=> {this.setState({lunch:e.target.checked})}} checked={lunch}/> Lunch</label><br/>
-                        <label className="form-label"><input type="checkbox" onChange={(e)=> {this.setState({dinner:e.target.checked})}} checked={dinner} /> Dinner</label>
+                        <label className="form-label"><b>Enter Your Meal Quantity</b></label><br/>
+                        <label className="form-label"><b>Lunch</b></label><br/>
+                        <input type="number" min="0" max="5" onChange={(e)=> {this.setState({lunch:e.target.value})}} value={lunch}/><br/>
+                        <label className="form-label"><b>Dinner</b></label><br/>
+                        <input type="number" min="0" max="5" onChange={(e)=> {this.setState({dinner:e.target.value})}} value={dinner}/>
                     </Modal.Body>
                     <Modal.Footer>
                         <Button className="btn-sm btn-danger" onClick={this.handleClose}>

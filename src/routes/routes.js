@@ -16,6 +16,7 @@ import OrderDailyMealPage from '../pages/OrderDailyMealPage';
 import DayWiseMealPage from '../pages/DayWiseMealPage';
 import PaymentPage from '../pages/PaymentPage';
 import PaymentSummaryPage from '../pages/PaymentSummaryPage';
+import MyTokenPage from '../pages/MyTokenPage';
 
 
 import PageNotFound from '../pages/PageNotFound';
@@ -40,6 +41,7 @@ class Routes extends React.Component{
                     <Route exact path="/day_wise_meal" render={(props)=> <DayWiseMealPage {...props} key={ Date.now() } />} />
                     <Route exact path="/make_payment" render={(props)=> <PaymentPage {...props} key={ Date.now() } />} />
                     <Route exact path="/payment_summary" render={(props)=> <PaymentSummaryPage {...props} key={ Date.now() } />} />
+                    <Route exact path="/user_token" render={(props)=> <MyTokenPage {...props} key={ Date.now() } />} />
 
 
 
