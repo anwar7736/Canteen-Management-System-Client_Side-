@@ -81,6 +81,7 @@ class UserList extends React.Component{
         {
             let editOrder = new FormData();
             editOrder.append("order_id", editID);
+            editOrder.append("token_no", token_no);
             editOrder.append("lunch", Number(lunch));
             editOrder.append("dinner", Number(dinner));
              Axios.post(API.ChangeOrderedMeal, editOrder)
@@ -119,7 +120,8 @@ class UserList extends React.Component{
 
     deleteIconOnClick=(id)=>{
                  localStorage.setItem('deleted_order_id', id);
-                 Axios.get(API.DeleteTodayOrder + id)
+                 const {token_no} = this.state;
+                 Axios.get(API.DeleteTodayOrder + id + "/" + token_no)
                  .then(response=>{
                     if(response.status == 200)
                     {
@@ -143,7 +145,8 @@ class UserList extends React.Component{
 
     restoreOrder=()=>{
         const order_id = localStorage.getItem('deleted_order_id');
-        Axios.get(API.RestoreTodayOrder + order_id)
+         const {token_no} = this.state;
+        Axios.get(API.RestoreTodayOrder + order_id + "/" + token_no)
                  .then(response=>{
                          //this.setState({undoBtn : 'd-none', isDisabled : true});
                          // localStorage.removeItem('deleted_order_id');

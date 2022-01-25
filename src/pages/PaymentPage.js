@@ -5,7 +5,25 @@ import Footer from '../components/footer';
 import {Redirect} from 'react-router-dom';
 
 class PaymentPage extends React.Component{
+		state = {
+			redirectStatus : false,
+		}
 
+	componentDidMount(){
+		   if(!localStorage.getItem('login'))
+            {
+                this.setState({redirectStatus : true});
+            }
+	}
+
+		RedirectToLoginPage=()=>{
+		if(this.state.redirectStatus==true)
+		{
+			return (
+					<Redirect to="/login" />
+					);
+		}
+	}
  render(){
  	return(
  		<Fragment>
@@ -15,6 +33,7 @@ class PaymentPage extends React.Component{
  				<center><a  className="btn btn-info text-white" href="http://127.0.0.1:8000/online-payment">Online Payment</a></center>
 
  			<Footer/>
+ 			  {this.RedirectToLoginPage()}
  		</Fragment>
  		)
  }

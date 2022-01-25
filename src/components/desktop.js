@@ -39,6 +39,7 @@ class DesktopNavbar extends React.Component{
         localStorage.removeItem('login');
         localStorage.removeItem('id');
         localStorage.removeItem('name');
+        localStorage.removeItem('token_no');
         localStorage.removeItem('username');
         localStorage.removeItem('email');
         localStorage.removeItem('phone');
