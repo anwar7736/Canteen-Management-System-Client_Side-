@@ -176,7 +176,7 @@ class DesktopNavbar extends React.Component{
                                     <Link to="/payment_summary" className="text-dark">Payment Statement</Link>
                                 </NavDropdown.Item>
                                 <NavDropdown.Item>
-                                    <Link to="#" className="text-danger">Monthly Statement</Link>
+                                    <Link to="/monthly_statement" className="text-danger">Monthly Statement</Link>
                                 </NavDropdown.Item>
                                 <NavDropdown.Divider />
                           </NavDropdown>

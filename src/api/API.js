@@ -28,6 +28,9 @@ class API {
 	static LastFivePaymentDetails  = this.baseURL + "LastFivePaymentDetails/";
 	static LastFiveMonthsStatements  = this.baseURL + "LastFiveMonthsStatements/";
 	static LastSevenDaysMealReport  = this.baseURL + "LastSevenDaysMealReport/";
+	static GetYearsAndMonths  = this.baseURL + "GetYearsAndMonths";
+	static GetMonthlyStatementByKey  = this.baseURL + "GetMonthlyStatementByKey";
+	static GetAllMonthlyStatement  = this.baseURL + "GetAllMonthlyStatement/";
 
 
 

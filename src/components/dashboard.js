@@ -71,14 +71,14 @@ class Dashboard extends React.Component{
             cogoToast.error('Something went wrong!');
          });
 
-         // Axios.get(API.LastFiveMonthsStatements + user_id)
-         // .then(response=>{
-         //     this.setState({LastFiveMonthsStatements : response.data});
+         Axios.get(API.LastFiveMonthsStatements + token_no)
+         .then(response=>{
+             this.setState({LastFiveMonthsStatements : response.data});
 
-         // })
-         // .catch(error=>{
-         //    cogoToast.error('Something went wrong!');
-         // });
+         })
+         .catch(error=>{
+            cogoToast.error('Something went wrong!');
+         });
      }
 
 
@@ -86,7 +86,7 @@ class Dashboard extends React.Component{
 
     const columns = [
             {
-                name: 'Meal Given Date',
+                name: 'Meal Take Date',
                 selector: 'meal_given_date',
                 sortable: true,
 
@@ -149,6 +149,73 @@ class Dashboard extends React.Component{
             {
                 name: 'Status',
                 selector: 'status',
+                sortable: true,
+            }, 
+        ];
+
+         const statements = [
+            {
+                name: 'Year',
+                selector: 'year',
+                sortable: true,
+
+            },  
+            {
+                name: 'Month',
+                selector: 'month',
+                sortable: true,
+
+            }, 
+            {
+                name: 'Token No',
+                selector: 'token_no',
+                sortable: false,
+            },
+            {
+                name: 'Total Lunch',
+                selector: 'total_lunch',
+                sortable: true,
+
+            },
+            {
+                name: 'Lunch Cost',
+                selector: 'lunch_cost',
+                sortable: true,
+
+            },
+            {
+                name: 'Total Dinner',
+                selector: 'total_dinner',
+                sortable: true,
+            },
+            {
+                name: 'Dinner Cost',
+                selector: 'dinner_cost',
+                sortable: true,
+            }, 
+            {
+                name: 'Total Meal',
+                selector: 'total_meal',
+                sortable: true,
+            },  
+            {
+                name: 'Total Cost',
+                selector: 'total_cost',
+                sortable: true,
+            },  
+            {
+                name: 'Total Payment',
+                selector: 'total_payment',
+                sortable: true,
+            },  
+            {
+                name: 'Give',
+                selector: 'give',
+                sortable: true,
+            },  
+            {
+                name: 'Take',
+                selector: 'take',
                 sortable: true,
             }, 
         ];
@@ -259,8 +326,8 @@ class Dashboard extends React.Component{
                         noHeader={true}
                         paginationPerPage={5}
                         pagination={true}
-                        columns={columns}
-                        data={this.state.LastSevenDaysMealReport}
+                        columns={statements}
+                        data={this.state.LastFiveMonthsStatements}
                     />
                 </div>
             </div>

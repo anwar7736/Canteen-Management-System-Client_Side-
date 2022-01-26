@@ -60,7 +60,7 @@ class DayWiseMeal extends React.Component{
     const {from_date, to_date} = this.state;
     const columns = [
             {
-                name: 'Meal Given Date',
+                name: 'Meal Take Date',
                 selector: 'meal_given_date',
                 sortable: true,
 

@@ -182,7 +182,7 @@ class UserList extends React.Component{
 
  	const columns = [
             {
-                name: 'Meal Given Date',
+                name: 'Meal Take Date',
                 selector: 'meal_given_date',
                 sortable: true,
 
@@ -257,7 +257,7 @@ class UserList extends React.Component{
                         <input value={name} disabled className="form-control form-control-sm" type="text"/> 
                         <label className="form-label "><b>Your Token No</b></label>
                         <input value={token_no} disabled className="form-control form-control-sm" type="text"/>
-                         <label className="form-label"><b>Meal Given Date</b></label>
+                         <label className="form-label"><b>Meal Take Date</b></label>
                         <input value={given_date} disabled className="form-control form-control-sm" type="text"/><br/>
                         <label className="form-label"><b>Enter Your Meal Quantity</b></label><br/>
                         <label className="form-label"><b>Lunch</b></label><br/>
