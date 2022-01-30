@@ -49,40 +49,13 @@ Login=(e)=>{
 		 this.setState({isDisabled : true});
 		Axios.post(API.login, {username:username, password:password})
                  .then(response=>{
-       //              if(response.status==200 && response.data[0]==='admin')
-       //              {
-       //              	 this.setState({isDisabled : false});
-       //                   // localStorage.setItem('login', true);
-						 // localStorage.setItem('current_user', username);
-       //                   localStorage.setItem('admin_verification', true);
-       //                   localStorage.setItem('email_verified', response.data[1]);
-       //                   if(this.state.isChecked==true)
-       //                   {
-       //                   	localStorage.setItem('user', this.state.username);
-       //                   	localStorage.setItem('pass', this.state.password);
-       //                   }
-       //                   else
-       //                   {
-       //                   	let user = localStorage.getItem('user');
-							// let pass = localStorage.getItem('pass');
-							// if(user!==null && pass!==null)
-							// {
-							// 	localStorage.removeItem('user');
-							// 	localStorage.removeItem('pass');	
-							// }
-       //                   }
-       //                  this.setState({redirectStatus : true});
-                    //}
                     if (response.status==200 && response.data[0]==='user')
                     {
                     	 this.setState({isDisabled : false});
-                    	localStorage.setItem('login', true);
+                    	 localStorage.setItem('login', true);
                          localStorage.setItem('user', true);
                          localStorage.setItem('id', response.data[1]['id']);
                          localStorage.setItem('name', response.data[1]['name']);
-                         // localStorage.setItem('username', response.data[1]['username']);
-                         // localStorage.setItem('email', response.data[1]['email']);
-                         // localStorage.setItem('phone', response.data[1]['phone']);
                          localStorage.setItem('photo', response.data[1]['photo']);
                          localStorage.setItem('token_no', response.data[1]['token_no']);
                          if(this.state.isChecked==true)
@@ -107,6 +80,10 @@ Login=(e)=>{
 
                     else if(response.data === 0){
                          cogoToast.error("Username or password is wrong!");
+                          this.setState({isDisabled : false});
+                    }
+                    else if(response.data === 'inactive'){
+                         cogoToast.error("Your id is disabled! Please contact to admin");
                           this.setState({isDisabled : false});
                     }
                  })
