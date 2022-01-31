@@ -175,7 +175,7 @@ class UserList extends React.Component{
 
     }
  render(){
-    const date = new Date();
+    const date = new Date(this.valueOf);
     const {lunch, dinner, btnText, show, name, token_no, isDisabled, undoBtn} = this.state;
 
     const given_date = date.getFullYear() + "-" + date.getMonth()+1 + "-" + (date.getDate()+1);

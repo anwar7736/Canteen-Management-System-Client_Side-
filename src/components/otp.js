@@ -114,7 +114,7 @@ OTPVerify=(e)=>{
 		}
 		else
 		{	
-			this.setState({verifyBtn : 'Verify OTP', isDisabled : true});
+			this.setState({verifyBtn : 'Verify OTP', isDisabled : false});
 			cogoToast.error('Your OTP is not valid!');
 		}
 	})

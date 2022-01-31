@@ -22,7 +22,7 @@ class Email extends React.Component{
 EmailVerify=(e)=>{
 	e.preventDefault();
 	let email = this.state.email;
-	let EmailRegx= /^[a-zA-Z0-9]+@+[a-zA-Z0-9]+.+[A-z]/;
+	let EmailRegx= /^[a-zA-Z0-9_]+@+[a-zA-Z0-9]+.+[A-z]/;
 	if(email=='')
 	{
 		 cogoToast.warn('Email Address Field is Required!');

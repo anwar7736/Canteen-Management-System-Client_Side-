@@ -8,8 +8,8 @@ import Axios from 'axios';
 
 class Login extends React.Component{
 		state = {
-			username : 'anwar1234',
-			password : '123',
+			username : '',
+			password : '',
 			isChecked : true,
 			redirectStatus : false,
 			isDisabled : false,
@@ -124,6 +124,7 @@ RedirectToHomePage=()=>{
  		<Fragment>
  			<Container className="mt-4 col-lg-5 col-md-5 col-sm-8 col-xs-12">
  						<Form onSubmit={this.Login}>
+ 							<h3 className="text-center text-success"><b>Canteen Management System</b></h3><br/>
  							<h2 className="text-center text-danger"><b>LOGIN</b></h2>
 						  <Form.Group controlId="formBasicEmail">
 						    <Form.Label>Enter Username</Form.Label>

@@ -50,7 +50,7 @@ class Profile extends Component {
       let NameRegx=/^[A-Za-z\'\s\.\:\-]+$/;
 	  let UserNameRegx=/^[A-Za-z0-9\'\s\.\:\-]+$/;
       let MobileRegx=/^(?:\+?88|0088)?01[15-9]\d{8}$/;
-      let EmailRegx= /^[a-zA-Z0-9]+@+[a-zA-Z0-9]+.+[A-z]/;
+      let EmailRegx= /^[a-zA-Z0-9_]+@+[a-zA-Z0-9]+.+[A-z]/;
 
        if(name.length===0)
         {
