@@ -175,10 +175,10 @@ class UserList extends React.Component{
 
     }
  render(){
-    const date = new Date(this.valueOf);
+    const date = new Date();
     const {lunch, dinner, btnText, show, name, token_no, isDisabled, undoBtn} = this.state;
 
-    const given_date = date.getFullYear() + "-" + date.getMonth()+1 + "-" + (date.getDate()+1);
+    const order_date = date.getDate() + "-" + date.getMonth() + "-" + date.getFullYear();
 
  	const columns = [
             {
@@ -257,8 +257,8 @@ class UserList extends React.Component{
                         <input value={name} disabled className="form-control form-control-sm" type="text"/> 
                         <label className="form-label "><b>Your Token No</b></label>
                         <input value={token_no} disabled className="form-control form-control-sm" type="text"/>
-                         <label className="form-label"><b>Meal Take Date</b></label>
-                        <input value={given_date} disabled className="form-control form-control-sm" type="text"/><br/>
+                         <label className="form-label"><b>Meal Order Date</b></label>
+                        <input value={order_date} disabled className="form-control form-control-sm" type="text"/><br/>
                         <label className="form-label"><b>Enter Your Meal Quantity</b></label><br/>
                         <label className="form-label"><b>Lunch</b></label><br/>
                         <input type="number" min="0" max="5" onChange={(e)=> {this.setState({lunch:e.target.value})}} value={lunch}/><br/>
