@@ -31,6 +31,7 @@ class API {
 	static GetYearsAndMonths  = this.baseURL + "GetYearsAndMonths";
 	static GetMonthlyStatementByKey  = this.baseURL + "GetMonthlyStatementByKey";
 	static GetAllMonthlyStatement  = this.baseURL + "GetAllMonthlyStatement/";
+    static GetMealRate   = this.baseURL + "GetMealRate";
 
 
 
