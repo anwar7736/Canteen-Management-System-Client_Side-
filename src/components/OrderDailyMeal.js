@@ -54,12 +54,11 @@ class UserList extends React.Component{
         }
         else if(editID == ''){
             let myOrder = new FormData();
-            myOrder.append('user_id', user_id);
             myOrder.append('token_no', token_no);
             myOrder.append('lunch', Number(lunch));
             myOrder.append('dinner', Number(dinner));
             console.log(myOrder);
-           Axios.post(API.OrderDailyMeal, myOrder)
+            Axios.post(API.OrderDailyMeal, myOrder)
             .then(response=>{
                     if(response.status==200 && response.data==1)
                     {
@@ -121,7 +120,7 @@ class UserList extends React.Component{
     deleteIconOnClick=(id)=>{
                  localStorage.setItem('deleted_order_id', id);
                  const {token_no} = this.state;
-                 Axios.get(API.DeleteTodayOrder + id + "/" + token_no)
+                 Axios.get(API.DeleteTodayOrder + id)
                  .then(response=>{
                     if(response.status == 200)
                     {
@@ -145,8 +144,7 @@ class UserList extends React.Component{
 
     restoreOrder=()=>{
         const order_id = localStorage.getItem('deleted_order_id');
-         const {token_no} = this.state;
-        Axios.get(API.RestoreTodayOrder + order_id + "/" + token_no)
+        Axios.get(API.RestoreTodayOrder + order_id)
                  .then(response=>{
                          //this.setState({undoBtn : 'd-none', isDisabled : true});
                          // localStorage.removeItem('deleted_order_id');

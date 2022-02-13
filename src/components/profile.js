@@ -48,7 +48,7 @@ class Profile extends Component {
       let photo = this.state.photo;
       let address = this.state.address;
       let NameRegx=/^[A-Za-z\'\s\.\:\-]+$/;
-	  let UserNameRegx=/^[A-Za-z0-9\'\s\.\:\-]+$/;
+	    let UserNameRegx=/^[A-Za-z0-9\'\s\.\:\-]+$/;
       let MobileRegx=/^(?:\+?88|0088)?01[15-9]\d{8}$/;
       let EmailRegx= /^[a-zA-Z0-9_]+@+[a-zA-Z0-9]+.+[A-z]/;
 
