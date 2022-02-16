@@ -50,21 +50,18 @@ class Profile extends Component {
             			<button onClick={this.printToken} className={btn + " btn btn-danger "}>Print Token</button>
             		</div>
             	</div>
-                <div className="container token_preview card mt-4 col-lg-4 col-md-5 col-sm-8 col-xs-8">
-                        <h3 className="text-success text-center m-3"><b>CANTEEN <br/>MANAGEMENT SYSTEM</b></h3>
-                        <img src={previewImg} className="prevIMG"/>
-                        <hr/>
+                     <div className="container token_preview card mt-4 col-lg-4 col-md-5 col-sm-8 col-xs-8">
                         <div className="token_section">
-                        	<h5 className=""><b className="text-muted">Name :</b> <span className="text-muted">{name}</span></h5>
-	                        <h5 className=""><b className="text-muted">Email :</b> <span className="text-muted">{email}</span></h5>
-	                        <h5 className=""><b className="text-muted">Phone :</b> <span className="text-muted">{phone}</span></h5>
-	                        <h5 className=""><b className="text-muted">Reg Date :</b> <span className="text-muted">{reg_date}</span></h5>
+                            <h3 className="text-success text-center m-3"><b>CANTEEN <br/>MANAGEMENT SYSTEM</b></h3><hr/>
+                            <img src={previewImg} className="prevIMG"/>
+                            <hr/>
+                                <h5 className=""><b className="text-muted">Name :</b> <span className="text-muted">{name}</span></h5>
+                                <h5 className=""><b className="text-muted">Email :</b> <span className="text-muted">{email}</span></h5>
+                                <h5 className=""><b className="text-muted">Phone :</b> <span className="text-muted">{phone}</span></h5>
+                                <h5 className=""><b className="text-muted">Reg Date :</b> <span className="text-muted">{reg_date}</span></h5><hr/>
+                            <h2 className="text-danger text-center"><b>TOKEN NO : {token_no}</b></h2>
                         </div>
-                        <hr/>
-                         <h2 className="text-danger text-center"><b>TOKEN NO : {token_no}</b></h2>
-                        <hr/>
-
-                    </div>
+                     </div>
             </Fragment>
         );
     }
