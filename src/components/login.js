@@ -8,8 +8,8 @@ import Axios from 'axios';
 
 class Login extends React.Component{
 		state = {
-			username : '',
-			password : '',
+			username : 'anwar123',
+			password : '123',
 			isChecked : true,
 			redirectStatus : false,
 			isDisabled : false,
