@@ -226,7 +226,7 @@ class Dashboard extends React.Component{
                         "October", "November", "December"];
  	return(
  		<Fragment>
-        <div className="container" style={{marginBottom : '100px'}}>   
+        <div className="container animated zoomIn" style={{marginBottom : '100px'}}>   
             <h4 className="text-center bg-danger text-light p-2 my-2">Dashboard Summary</h4>
              <h3 className="text-center bg-light text-success p-2 my-2">Month of <span>{months[new Date().getMonth()]}</span> <span className="text-danger">{new Date().getFullYear()}</span></h3>
              <hr/>

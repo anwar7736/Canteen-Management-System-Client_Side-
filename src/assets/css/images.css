@@ -24,9 +24,15 @@
     border-radius: 50%;
     margin-left:  50px;
 }
+
 .token_preview{
     margin-bottom: 100px;
+    padding : 20px;
+    border : 10px solid red;
+
 }
 .token_section{
-    margin:auto;
+    margin:auto; 
+    padding : 30px;
+    border : 10px solid red;
 }

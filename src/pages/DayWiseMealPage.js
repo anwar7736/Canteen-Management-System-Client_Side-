@@ -27,7 +27,7 @@ class DayWiseMealPage extends React.Component{
  render(){
  	return(
  		<Fragment>
- 			<title>CMS | Day Wise Meal Report</title>
+ 			<title>Day Wise Meal Report</title>
  			<NavBar/>
  				<DayWiseMeal/>
  			<Footer/>

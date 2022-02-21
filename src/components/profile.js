@@ -147,7 +147,7 @@ class Profile extends Component {
     render() {
         return (
             <Fragment>
-                <div className="container card mt-4 col-lg-5 col-md-5 col-sm-8 col-xs-12">
+                <div className="container card mt-4 col-lg-5 col-md-5 col-sm-8 col-xs-12 animated zoomIn">
                         <Form onSubmit={this.onUpdateProfile}>
                                 <h5 className="text-success text-center m-4"><b>YOUR PROFILE</b></h5><hr/>
                           <Form.Group controlId="formBasicPassword">

@@ -27,7 +27,7 @@ class PaymentPage extends React.Component{
  render(){
  	return(
  		<Fragment>
- 			<title>Dashboard</title>
+ 			<title>Make Payment</title>
  			<NavBar/><br/>
  				<h5 className="text-center" >Please click below link for online payment</h5>
  				<center><a  className="btn btn-info text-white" href="http://127.0.0.1:8000/online-payment">Online Payment</a></center>

@@ -27,7 +27,7 @@ state = {
  render(){
  	return(
  		<Fragment>
- 			<title>CMS | 404</title>
+ 			<title>Notification</title>
  			<NavBar/>
  				<AdminNotification/>
  			<Footer/>

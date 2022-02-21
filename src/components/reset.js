@@ -108,7 +108,7 @@ onRedirectToLoginPage=()=>{
 
  	return(
  		<Fragment>
- 			<Container className="mt-4 col-lg-5 col-md-5 col-sm-8 col-xs-12">
+ 			<Container className="mt-4 col-lg-5 col-md-5 col-sm-8 col-xs-12 animated zoomIn">
 			 			<span id="count_down" className="d-none"></span>
  						<Form onSubmit={this.ResetPassword}>
  							<h2 className="text-center text-danger">Step 03 : Reset Password</h2>

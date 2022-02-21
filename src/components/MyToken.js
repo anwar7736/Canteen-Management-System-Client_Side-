@@ -45,11 +45,12 @@ class Profile extends Component {
     	const {name, token_no, email, phone, previewImg, reg_date, btn} = this.state;
         return (
             <Fragment>
-            	<div className="row m-1">
-            		<div className="col-md-9 offset-4">
-            			<button onClick={this.printToken} className={btn + " btn btn-danger "}>Print Token</button>
-            		</div>
-            	</div>
+            	<Container className="animated zoomIn">
+                    <div className="row m-1">
+                    <div className="col-md-9 offset-4">
+                        <button onClick={this.printToken} className={btn + " btn btn-danger "}>Print Token</button>
+                    </div>
+                </div>
                      <div className="container token_preview card mt-4 col-lg-4 col-md-5 col-sm-8 col-xs-8">
                         <div className="token_section">
                             <h3 className="text-success text-center m-3"><b>CANTEEN <br/>MANAGEMENT SYSTEM</b></h3><hr/>
@@ -62,6 +63,7 @@ class Profile extends Component {
                             <h2 className="text-danger text-center"><b>TOKEN NO : {token_no}</b></h2>
                         </div>
                      </div>
+                </Container>
             </Fragment>
         );
     }

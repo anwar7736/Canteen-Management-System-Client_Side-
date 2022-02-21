@@ -122,7 +122,7 @@ RedirectToHomePage=()=>{
 
  	return(
  		<Fragment>
- 			<Container className="mt-4 col-lg-5 col-md-5 col-sm-8 col-xs-12">
+ 			<Container className="mt-4 col-lg-5 col-md-5 col-sm-8 col-xs-12 animated zoomIn">
  						<Form onSubmit={this.Login}>
  							<h3 className="text-center text-success"><b>Canteen Management System</b></h3><br/>
  							<h2 className="text-center text-danger"><b>LOGIN</b></h2>

@@ -25,7 +25,7 @@ class MyNotification extends React.Component{
 		const {notification_list} = this.state;
 		const notification_item = notification_list.map((notification)=>{
 			return (
-					<div class="row m-2">
+					<div class="row m-2 animated zoomIn">
 						<div class="col-md-6 offset-md-3">
 							<div class="card">
 								<div className={notification.status === 'Unread' || notification.status === 'Latest' ? 'unread-msg' : ''}></div>

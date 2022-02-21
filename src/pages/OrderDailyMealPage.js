@@ -27,7 +27,7 @@ class OrderDailyMealPage extends React.Component{
  render(){
     return(
         <Fragment>
-            <title>CMS | Order Daily Meal</title>
+            <title>Order Daily Meal</title>
             <NavBar/>
                 <OrderDailyMeal/>
             <Footer/>

@@ -30,7 +30,7 @@ class DailyMealItemPage extends React.Component{
  render(){
  	return(
  		<Fragment>
- 			<title>CMS | Daily Meal Items</title>
+ 			<title>Daily Meal Item</title>
  			<NavBar/>
  				<DailyMeal/>
  			<Footer/>

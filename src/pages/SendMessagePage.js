@@ -31,7 +31,7 @@ class SendMessagePage extends React.Component{
  render(){
  	return(
  		<Fragment>
- 				<title>CMS | Send Message to Admin</title>
+ 				<title>Send Message</title>
  			<NavBar/>
  				<SendMessage/>
 				{this.RedirectToLoginPage()}

@@ -84,7 +84,7 @@ ChangePassword=(e)=>{
  render(){
  	return(
  		<Fragment>
- 			<div className="container mt-4 col-lg-5 col-md-5 col-sm-8 col-xs-12">
+ 			<div className="container mt-4 col-lg-5 col-md-5 col-sm-8 col-xs-12 animated zoomIn">
  						<Form onSubmit={this.ChangePassword}>
  								<h2 className="text-center text-danger">Change Password</h2>
 						  <Form.Group controlId="formBasicPassword">

@@ -32,7 +32,7 @@ class Login extends React.Component{
  render(){
  	return(
  		<Fragment>
- 			<title>CMS | Login</title>
+ 			<title>User Login</title>
  			<NavBar/>
  			<SiteLogin/>
  			<Footer/>

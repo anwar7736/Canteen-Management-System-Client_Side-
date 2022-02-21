@@ -30,7 +30,7 @@ class ProfilePage extends React.Component{
  render(){
  	return(
  		<Fragment>
- 			<title>CMS | My Profile</title>
+ 			<title>My Profile</title>
  			<NavBar/>
  			<Profile/>
  			<Footer/>

@@ -158,7 +158,7 @@ onRedirectToEmailVerify=()=>{
 
  	return(
  		<Fragment>	
- 			<Container className="mt-4 col-lg-5 col-md-5 col-sm-8 col-xs-12">
+ 			<Container className="mt-4 col-lg-5 col-md-5 col-sm-8 col-xs-12 animated zoomIn">
  						<Form id="OTPForm" onSubmit={this.OTPVerify}>
  							<h2 className="text-center text-danger">Step 02 : OTP Verification</h2>
 							 <p>We've already sent 6 digits OTP number in this email : {this.state.email}</p><hr/>

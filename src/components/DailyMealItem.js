@@ -61,7 +61,7 @@ class DailyMealItem extends React.Component{
  	})
  	return(
  		<Fragment>
- 			<div className="mt-3" style={{marginBottom:'100px'}}>
+ 			<div className="mt-3 animated zoomIn" style={{marginBottom:'100px'}}>
  					 <h5 className="text-danger"><marquee scrollAmount="5">বিঃদ্রঃ প্রতিদিন দুপুরের খাবার <span>{lunch_expiry_time}</span>-এর মধ্যে এবং রাতের খাবার <span>{dinner_expiry_time}</span>-এর মধ্যে সংগ্রহ করতে হবে।</marquee></h5><br/>
  					 <center>
 	 					<h6 className="text-muted">দুপুরের খাবারের মূল্যঃ <span className="text-danger">{lunch_rate_bangla}</span></h6><br/>

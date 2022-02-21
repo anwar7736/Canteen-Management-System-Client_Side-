@@ -27,7 +27,7 @@ class DashboardPage extends React.Component{
  render(){
  	return(
  		<Fragment>
- 			<title>Dashboard</title>
+ 			<title>Home</title>
  			<NavBar/>
  				<Dashboard/>
  			<Footer/>
