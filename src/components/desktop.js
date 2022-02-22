@@ -74,7 +74,7 @@ class DesktopNavbar extends React.Component{
         
         this.state.login ?
                           <>
-                            <NavDropdown title={<img className="profile-photo" src={localStorage.getItem('photo')}/>} id="navbarScrollingDropdown">
+                            <NavDropdown className="profile_picture" title={<img className="profile-photo" src={localStorage.getItem('photo')}/>} id="navbarScrollingDropdown">
                              <NavDropdown.Item>
                                 <span className="text-muted">{localStorage.getItem('name')}</span>
                             </NavDropdown.Item>
@@ -162,7 +162,7 @@ class DesktopNavbar extends React.Component{
                                     </div>
                                 </Link>
                             </Nav.Link>
-                          <i className="fa fa-report-alt"/><NavDropdown className="nav-item-div" title="Reports" id="navbarScrollingDropdown">
+                          <i className="fa fa-report-alt"/><NavDropdown className="nav-item-div profile_picture" title="Reports" id="navbarScrollingDropdown">
                                  <NavDropdown.Item>
                                     <Link to="/day_wise_meal"className="text-danger" >Day Wise Meal Report</Link>
                                 </NavDropdown.Item>
