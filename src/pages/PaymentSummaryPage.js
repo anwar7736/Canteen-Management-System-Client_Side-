@@ -1,5 +1,5 @@
 import React, {Component, Fragment} from 'react';
-import NavBar from '../components/desktop';
+import NavBar from '../components/Navbar';
 import PaymentSummary from '../components/PaymentSummary';
 import Footer from '../components/footer';
 import {Redirect} from 'react-router-dom';

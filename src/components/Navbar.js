@@ -5,7 +5,7 @@ import API from '../api/API';
 import {Redirect} from "react-router-dom";
 import Axios from 'axios';
 import cogoToast from 'cogo-toast';
-class DesktopNavbar extends React.Component{
+class NavigationBar extends React.Component{
     state = {
             user_id : '',
             countLatest : '',
@@ -30,6 +30,15 @@ class DesktopNavbar extends React.Component{
             else{
                 this.setState({login : false});
             }
+
+            Axios.get(API.GetShopLogo)
+            .then(response=>{
+                localStorage.setItem('shop_logo', response.data[0]['shop_logo']);
+            })
+            .catch(error=>{
+
+            });
+            
     }
     Login=()=>{
         localStorage.setItem('name', 'Anwar');
@@ -91,9 +100,11 @@ class DesktopNavbar extends React.Component{
                             <NavDropdown.Item>
                                 <Link to="/change_password"><span className="btn text-primary"><i class="fas fa-key"></i> Change Password</span></Link>
                             </NavDropdown.Item> 
-                            <NavDropdown.Item>
-                                <Link to="#"><span className="btn text-muted"><i class="fas fa-cog"></i> Settings</span></Link>
-                            </NavDropdown.Item>
+                            {/*
+                                <NavDropdown.Item>
+                                    <Link to="#"><span className="btn text-muted"><i class="fas fa-cog"></i> Settings</span></Link>
+                                </NavDropdown.Item>
+                            */}
                             <NavDropdown.Divider />
                             <NavDropdown.Item>
                                 <a onClick={this.Logout} className="link btn text-danger"><i class="fas fa-power-off"></i> Logout</a>
@@ -117,7 +128,7 @@ class DesktopNavbar extends React.Component{
  			<Navbar className="w-100 nav-bar sticky-top" collapseOnSelect expand="lg" variant="light">
 				  <Link to="/">
 				  <Navbar.Brand style={{cursor:'pointer'}}>
-				  		<img className="nav-logo" src="../cms.webp" alt="NavLogo"/>
+				  		<img className="nav-logo" src={localStorage.getItem('shop_logo')} alt="ShopLogo"/>
 				  </Navbar.Brand>
 				  </Link>
 				  <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -148,7 +159,7 @@ class DesktopNavbar extends React.Component{
                             </Nav.Link>
 
                             <Nav.Link className="text-center" >
-                                <Link to="#">
+                                <Link to="/make_payment">
                                     <div className="nav-item-div">
                                         <i className="fa mx-1 fa-shopping-bag"/>Make Payment
                                     </div>
@@ -193,4 +204,4 @@ class DesktopNavbar extends React.Component{
  		)
  }
 }
-export default DesktopNavbar;
+export default NavigationBar;

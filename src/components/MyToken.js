@@ -34,7 +34,16 @@ class Profile extends Component {
         })
         .catch(error=>{
 
+        });
+        
+        Axios.get(API.GetShopName)
+        .then(response=>{
+            localStorage.setItem('shop_name', response.data[0]['shop_name']);
         })
+        .catch(error=>{
+
+        });
+        
      }
      printToken=()=>{ 
      	this.setState({btn : 'd-none'})
@@ -53,7 +62,7 @@ class Profile extends Component {
                 </div>
                      <div className="container token_preview card mt-4 col-lg-4 col-md-5 col-sm-8 col-xs-8">
                         <div className="token_section">
-                            <h3 className="text-success text-center m-3"><b>CANTEEN <br/>MANAGEMENT SYSTEM</b></h3><hr/>
+                            <h3 className="text-success text-center m-3"><b>{localStorage.getItem('shop_name')}</b></h3><hr/>
                             <img src={previewImg} className="prevIMG"/>
                             <hr/>
                                 <h5 className=""><b className="text-muted">Name :</b> <span className="text-muted">{name}</span></h5>

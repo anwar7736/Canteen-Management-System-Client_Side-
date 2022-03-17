@@ -50,7 +50,7 @@ class Dashboard extends React.Component{
 
          })
          .catch(error=>{
-            cogoToast.error('Something went wrong!');
+            
          });
 
          Axios.get(API.LastSevenDaysMealReport + user_id)
@@ -59,7 +59,7 @@ class Dashboard extends React.Component{
 
          })
          .catch(error=>{
-            cogoToast.error('Something went wrong!');
+            
          }); 
 
          Axios.get(API.LastFivePaymentDetails + token_no)
@@ -68,7 +68,7 @@ class Dashboard extends React.Component{
 
          })
          .catch(error=>{
-            cogoToast.error('Something went wrong!');
+            
          });
 
          Axios.get(API.LastFiveMonthsStatements + token_no)
@@ -77,7 +77,7 @@ class Dashboard extends React.Component{
 
          })
          .catch(error=>{
-            cogoToast.error('Something went wrong!');
+            
          });
      }
 

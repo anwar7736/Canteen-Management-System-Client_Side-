@@ -1,6 +1,6 @@
 
 import React, {Component, Fragment} from 'react';
-import NavBar from '../components/desktop';
+import NavBar from '../components/Navbar';
 import OTPVerify from '../components/otp';
 import Footer from '../components/footer';
 import {Redirect} from 'react-router-dom';

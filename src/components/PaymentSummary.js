@@ -24,7 +24,7 @@ class PaymentSummary extends React.Component{
 
          })
          .catch(error=>{
-            cogoToast.error('Something went wrong!');
+            
          })
      }
 

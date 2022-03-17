@@ -24,8 +24,8 @@ class DayWiseMeal extends React.Component{
 
          })
          .catch(error=>{
-            cogoToast.error('Something went wrong!');
-         })
+            
+         });
      }
 
        resetForm=()=>{
@@ -89,7 +89,7 @@ class DayWiseMeal extends React.Component{
                 name: 'Total Amount',
                 selector: 'total_amount',
                 sortable: true,
-            },
+            }, 
         ];
 
  	return(

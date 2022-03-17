@@ -7,6 +7,8 @@ class API {
 	static ResetPassword   = this.baseURL + "ResetPassword";
 	static ChangePassword   = this.baseURL + "ChangePassword";
 	static GetUserProfile   = this.baseURL + "GetUserProfile";
+	static GetShopName   = this.baseURL + "GetProfileInfo";
+	static GetShopLogo   = this.baseURL + "GetProfileInfo";
 	static UpdateProfile   = this.baseURL + "UpdateProfile";
 	static GetDailyMealItem   = this.baseURL + "GetDailyMealItem";
 	static SendMessage   = this.baseURL + "SendMessage";

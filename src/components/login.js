@@ -22,6 +22,14 @@ componentDidMount(){
 	{
 		this.setState({username : user, password : pass, isChecked : true});
 	}
+	Axios.get(API.GetShopName)
+	.then(response=>{
+		localStorage.setItem('shop_name', response.data[0]['shop_name']);
+	})
+	.catch(error=>{
+
+	});
+	
 }
 RememberOnChange=()=>{
 	if(this.state.isChecked==false)
@@ -124,7 +132,7 @@ RedirectToHomePage=()=>{
  		<Fragment>
  			<Container className="mt-4 col-lg-5 col-md-5 col-sm-8 col-xs-12 animated zoomIn">
  						<Form onSubmit={this.Login}>
- 							<h3 className="text-center text-success"><b>Canteen Management System</b></h3><br/>
+ 							<h3 className="text-center text-success"><b>{localStorage.getItem('shop_name')}</b></h3><br/>
  							<h2 className="text-center text-danger"><b>LOGIN</b></h2>
 						  <Form.Group controlId="formBasicEmail">
 						    <Form.Label>Enter Username</Form.Label>

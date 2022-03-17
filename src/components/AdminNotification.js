@@ -17,7 +17,7 @@ class AdminNotification extends React.Component{
 		 	this.setState({notification_list : res.data});
 		 })
 		 .catch(err=>{
-		 	cogoToast.error('Something went wrong!');
+		 	
 		 })
 	}
 

@@ -28,7 +28,7 @@ class MonthlyReport extends React.Component{
 
          })
          .catch(error=>{
-            cogoToast.error('Something went wrong!');
+            
          });
 
          Axios.get(API.GetAllMonthlyStatement + token_no)
@@ -37,7 +37,7 @@ class MonthlyReport extends React.Component{
 
          })
          .catch(error=>{
-            cogoToast.error('Something went wrong!');
+            
          });
      }
 
