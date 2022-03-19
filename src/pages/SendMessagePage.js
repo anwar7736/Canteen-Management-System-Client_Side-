@@ -34,6 +34,7 @@ class SendMessagePage extends React.Component{
  				<title>Send Message</title>
  			<NavBar/>
  				<SendMessage/>
+ 				<Footer/>
 				{this.RedirectToLoginPage()}
  		</Fragment>
  		)

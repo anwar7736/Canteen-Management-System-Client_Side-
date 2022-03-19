@@ -133,7 +133,7 @@ RedirectToHomePage=()=>{
  			<Container className="mt-4 col-lg-5 col-md-5 col-sm-8 col-xs-12 animated zoomIn">
  						<Form onSubmit={this.Login}>
  							<h3 className="text-center text-success"><b>{localStorage.getItem('shop_name')}</b></h3><br/>
- 							<h2 className="text-center text-danger"><b>LOGIN</b></h2>
+ 							<h2 className="text-center text-danger"><b>User Login</b></h2>
 						  <Form.Group controlId="formBasicEmail">
 						    <Form.Label>Enter Username</Form.Label>
 						    <Form.Control value={this.state.username} onChange={(e)=>{this.setState({username:e.target.value})}} type="text" placeholder="Enter username" />
