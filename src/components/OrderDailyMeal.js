@@ -21,6 +21,8 @@ class UserList extends React.Component{
             modalTitle : 'Order Today Meal',
             btnText : 'Save Order',
             undoBtn : 'd-none',
+            yes : false,
+            no  : true
 
         }
     componentDidMount(){
@@ -48,7 +50,7 @@ class UserList extends React.Component{
 
     onSubmitHandler=()=>
     {
-        const {lunch, dinner, notes, editID, user_id, token_no} = this.state;
+        const {lunch, dinner, notes, editID, yes, user_id, token_no} = this.state;
         if(lunch=='0'  && dinner=='0')
         {
             cogoToast.warn('Please choose your meal!')
@@ -58,6 +60,7 @@ class UserList extends React.Component{
             myOrder.append('token_no', token_no);
             myOrder.append('lunch', Number(lunch));
             myOrder.append('dinner', Number(dinner));
+            myOrder.append('parcel', Number(yes));
             myOrder.append('notes', notes);
             console.log(myOrder);
             Axios.post(API.OrderDailyMeal, myOrder)
@@ -85,6 +88,7 @@ class UserList extends React.Component{
             editOrder.append("token_no", token_no);
             editOrder.append("lunch", Number(lunch));
             editOrder.append("dinner", Number(dinner));
+            editOrder.append('parcel', Number(yes));
             editOrder.append('notes', notes);
              Axios.post(API.ChangeOrderedMeal, editOrder)
                  .then(response=>{
@@ -108,7 +112,7 @@ class UserList extends React.Component{
      }
     }
     resetForm=()=>{
-        this.setState({ lunch : '',dinner : '', notes: '', btnText : 'Save Order', modalTitle : 'Order Today Meal', editID : '', deleteID : ''});
+        this.setState({ lunch : '',dinner : '', yes : false, no : true, notes: '', btnText : 'Save Order', modalTitle : 'Order Today Meal', editID : '', deleteID : ''});
     }
 
     handleClose=()=>{
@@ -159,12 +163,30 @@ class UserList extends React.Component{
                  })
     }
 
+    parcelStatus=(status)=>{
+        if(status === 'Yes')
+        {
+            this.setState({yes : true, no : false});
+        }
+        else
+        {
+            this.setState({yes : false, no : true});
+        }
+    }
+
     editIconOnClick=(id)=>{
        this.handleOpen();
        this.setState({editID:id, modalTitle : 'Update Today Order', btnText : 'Update Order'})
        const{user_id, token_no} = this.state;
        Axios.get(API.GetTodayOrderInfo + "/" + user_id + "/" + token_no)
                  .then(response=>{
+                         if(response.data[0].is_parcel==="Yes")
+                         {
+                            this.setState({yes : true, no : false});
+                         }
+                         else {
+                             this.setState({yes : false, no : true});
+                         }
                          this.setState({
                             lunch: response.data[0].lunch,
                             dinner: response.data[0].dinner,
@@ -178,7 +200,7 @@ class UserList extends React.Component{
     }
  render(){
     const date = new Date();
-    const {lunch, dinner, notes, btnText, show, name, token_no, isDisabled, undoBtn} = this.state;
+    const {lunch, dinner, notes, yes, no, btnText, show, name, token_no, isDisabled, undoBtn} = this.state;
 
     const order_date = date.getDate() + "-" + date.getMonth() + "-" + date.getFullYear();
 
@@ -214,6 +236,17 @@ class UserList extends React.Component{
                 selector: 'total_amount',
                 sortable: true,
             },
+            {
+                name: 'Is_Parcel',
+                selector: 'is_parcel',
+                sortable: true,
+            }, 
+            {
+                name: 'Status',
+                selector: 'status',
+                sortable: true,
+                
+            }, 
             {
                 name: 'Delete',
                 selector: 'id',
@@ -266,6 +299,9 @@ class UserList extends React.Component{
                         <input type="number" min="0" max="5" onChange={(e)=> {this.setState({lunch:e.target.value})}} value={lunch}/><br/>
                         <label className="form-label"><b>Dinner</b></label><br/>
                         <input type="number" min="0" max="5" onChange={(e)=> {this.setState({dinner:e.target.value})}} value={dinner}/><br/><br/>
+                        <label className="form-label"><b>Do you want to take parcel?</b></label><br/>
+                        <label><input type="radio" name="parcel" onClick={(e)=>this.parcelStatus('Yes')} checked={yes}/> Yes</label><br/>
+                        <label><input type="radio" name="parcel" onClick={(e)=>this.parcelStatus('No')} checked={no}/> No</label><br/>
                         <label className="form-label"><b>Add Notes (If Any)</b></label><br/>
                         <textarea className="form-control form-control-sm" onChange={(e)=> {this.setState({notes:e.target.value})}} value={notes} placeholder="Enter your notes.."/>
                     </Modal.Body>

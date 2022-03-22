@@ -90,6 +90,16 @@ class DayWiseMeal extends React.Component{
                 selector: 'total_amount',
                 sortable: true,
             }, 
+            {
+                name: 'Is_Parcel',
+                selector: 'is_parcel',
+                sortable: true,
+            }, 
+            {
+                name: 'Status',
+                selector: 'status',
+                sortable: true,
+            }, 
         ];
 
  	return(
