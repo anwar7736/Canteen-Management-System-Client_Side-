@@ -91,7 +91,7 @@ class DayWiseMeal extends React.Component{
                 sortable: true,
             }, 
             {
-                name: 'Is_Parcel',
+                name: 'Home Delivery',
                 selector: 'is_parcel',
                 sortable: true,
             }, 
