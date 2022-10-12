@@ -297,8 +297,8 @@ class Dashboard extends React.Component{
                 </div>
             </div>
             <hr/><h5 className="text-center text-danger">Last 7 Days Meal Summary</h5>
-            <div className="row">
-                <div className="col-md-12">
+            <div className="">
+                <div className="">
                     <DataTable
                         noHeader={true}
                         paginationPerPage={5}
@@ -309,8 +309,8 @@ class Dashboard extends React.Component{
                 </div>
             </div>
             <hr/>
-            <div className="row">
-                <div className="col-md-6">
+            <div className="">
+                <div className="">
                     <h6 className="text-center text-danger">Last Five Payment Details</h6>
                     <DataTable
                         noHeader={true}
@@ -320,7 +320,9 @@ class Dashboard extends React.Component{
                         data={this.state.LastFivePaymentDetails}
                     />
                 </div>
-                <div className="col-md-6">
+			</div>
+			<div className="">
+                <div className="">
                 <h6 className="text-center text-danger">Last Five Months Statement</h6>
                     <DataTable
                         noHeader={true}

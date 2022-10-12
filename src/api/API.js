@@ -1,5 +1,5 @@
 class API {
-	static baseURL = "http://127.0.0.1:8000/api/";
+	static baseURL = "https://canteen-api.coderanwar.online/api/";
 	static login   = this.baseURL + "login";
 	static verifyEmail   = this.baseURL + "EmailVerification";
 	static GetOTPExpiration   = this.baseURL + "GetOTPExpiration";
