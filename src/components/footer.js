@@ -10,7 +10,7 @@ class Footer extends Component {
             <Fragment>
                         <div className="w-100 footer p-2">
                             <span className="text-warning">&copy;Copyright {date}-{date+1}</span>
-                            <p className="product-name text-white no-print">All Rights Reserved By Md Anwar Hossain | Md Shajahan Shek</p>
+                            <p className="product-name text-white no-print">All Rights Reserved By Md Anwar Hossain</p>
                         </div>
             </Fragment>
         );
